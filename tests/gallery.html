@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Garment gallery (dev)</title>
+<style>
+  body{font:12px system-ui;margin:12px;background:#f6f6f4}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+  figure{margin:0;background:#fff;border:1px solid #ddd;border-radius:8px;padding:6px}
+  figure svg{width:100%;height:150px;display:block}
+  figcaption{text-align:center}
+</style></head>
+<body><div id="out" class="grid"></div>
+<script type="module">
+import { CATALOG, CUT_SETS, resolveSpec } from '../js/data/catalog.js';
+import { MATERIAL_SETS } from '../js/data/materials.js';
+import { garmentSVG } from '../js/garments/render.js';
+const q = new URLSearchParams(location.search);
+const cat = q.get('cat'), mode = q.get('mode') || 'types', view = q.get('view') || 'front';
+const out = document.getElementById('out');
+let html = '';
+const errors = [];
+for (const c of CATALOG) {
+  if (cat && c.id !== cat) continue;
+  for (const g of c.genres) for (const t of g.types) {
+    const cuts = mode === 'cuts' ? CUT_SETS[t.cuts] : [CUT_SETS[t.cuts][0]];
+    for (const cut of cuts) {
+      const mat = MATERIAL_SETS[t.materials][0];
+      const s = resolveSpec({ category: c.id, genre: g.id, type: t.id, cut: cut.id, material: mat });
+      try {
+        for (const v of view === 'both' ? ['front', 'back'] : [view]) {
+          html += `<figure>${garmentSVG({ tpl: s.tpl, params: s.params, view: v, materialId: mat, accent: s.tpl === 'shoe' ? '#f2f0eb' : '#c0392b' })}<figcaption>${t.label} · ${cut.label} · ${v}</figcaption></figure>`;
+        }
+      } catch (e) { errors.push(`${t.id}/${cut.id}: ${e.message}`); }
+    }
+  }
+}
+out.innerHTML = html;
+window.__errors = errors;
+document.title = 'done';
+</script></body></html>
