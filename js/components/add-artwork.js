@@ -2,6 +2,8 @@
 import { openDialog, esc, icon, $, $$, announce, toast, rovingGrid } from '../lib/dom.js';
 import { METHODS, methodIcon, renderMethod, demoArtwork } from './methods.js';
 import { PROVIDERS, SUGGESTIONS } from './image-search.js';
+
+const friendly = (e) => (/load failed|failed to fetch|networkerror|network request failed/i.test(e?.message || '') ? 'Couldn’t reach the image service. Check your connection.' : e?.message || 'Search failed.');
 import { urlToDataURL, fileToDataURL } from '../lib/image.js';
 import { prefs } from '../lib/store.js';
 
@@ -10,8 +12,8 @@ export function openAddArtwork({ garmentColor = '#cccccc' } = {}) {
     let result = null;
     const state = {
       method: prefs.get('lastMethod', 'print'),
-      provider: prefs.get('provider', 'openverse'),
-      kind: 'any', q: '', page: 1, items: [], hasMore: false, selected: null, busy: false, ctrl: null,
+      provider: PROVIDERS[prefs.get('searchProvider', 'wikimedia')] ? prefs.get('searchProvider', 'wikimedia') : 'wikimedia',
+      kind: 'any', q: '', page: 1, items: [], hasMore: false, selected: null, busy: false, ctrl: null, loading: false,
       tab: 'search',
     };
     const d = openDialog({ title: 'Add artwork', wide: true, className: 'add-dialog', body: '<div class="add-flow"></div>', onClose: () => resolve(result) });
@@ -91,7 +93,7 @@ export function openAddArtwork({ garmentColor = '#cccccc' } = {}) {
               <div class="results-wrap">
                 <p class="results-status muted" aria-live="polite" data-status></p>
                 <ul class="results" data-results aria-label="Search results"></ul>
-                <div class="more-row"><button type="button" class="btn btn-sm" data-more hidden>Load more</button></div>
+                <div class="more-row" data-sentinel><button type="button" class="btn btn-sm" data-more hidden>Load more</button></div>
               </div>
               <aside class="result-detail" data-detail aria-label="Selected image" hidden></aside>
             </div>
@@ -133,9 +135,16 @@ export function openAddArtwork({ garmentColor = '#cccccc' } = {}) {
       // search
       const form = $('[data-search]', host);
       form.addEventListener('submit', (e) => { e.preventDefault(); runSearch(true); });
-      form.provider.addEventListener('change', () => { state.provider = form.provider.value; prefs.set('provider', state.provider); if (state.q) runSearch(true); });
+      form.provider.addEventListener('change', () => { state.provider = form.provider.value; prefs.set('searchProvider', state.provider); if (state.q) runSearch(true); });
       form.kind.addEventListener('change', () => { state.kind = form.kind.value; if (state.q) runSearch(true); });
       $('[data-more]', host).addEventListener('click', () => runSearch(false));
+      // Infinite scroll: fetch the next page when the bottom of the results comes into view.
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((ents) => {
+          if (ents.some((en) => en.isIntersecting) && state.hasMore && !state.loading && state.items.length) runSearch(false);
+        }, { rootMargin: '0px 0px 400px 0px' });
+        io.observe($('[data-sentinel]', host));
+      }
       const resultsEl = $('[data-results]', host);
       rovingGrid(resultsEl, '.result');
       resultsEl.addEventListener('click', (e) => { const b = e.target.closest('.result'); if (b) selectItem(b.dataset.id); });
@@ -163,48 +172,73 @@ export function openAddArtwork({ garmentColor = '#cccccc' } = {}) {
       const form = $('[data-search]', host);
       const q = form.q.value.trim();
       if (!q) { form.q.focus(); return; }
-      if (fresh) { state.q = q; state.page = 1; state.items = []; state.selected = null; }
-      else state.page++;
+      if (!fresh && state.loading) return;
+      if (fresh) { state.q = q; state.page = 1; state.items = []; state.selected = null; state.hasMore = false; }
+      const page = fresh ? 1 : state.page + 1;
       state.ctrl?.abort();
-      state.ctrl = new AbortController();
+      const ctrl = (state.ctrl = new AbortController());
+      state.loading = true;
       const status = $('[data-status]', host);
       status.textContent = fresh ? 'Searching…' : 'Loading more…';
       $('[data-more]', host).hidden = true;
       if (fresh) { $('[data-results]', host).innerHTML = skeletons(); $('[data-detail]', host).hidden = true; }
-      try {
-        const prov = PROVIDERS[state.provider];
-        const { items, hasMore } = await prov.search(state.q, state.page, { kind: state.kind, signal: state.ctrl.signal });
-        const seen = new Set(state.items.map((x) => x.id));
-        state.items.push(...items.filter((x) => !seen.has(x.id)));
-        state.hasMore = hasMore;
-        renderResults(fresh);
-        status.textContent = state.items.length ? `${state.items.length} result${state.items.length === 1 ? '' : 's'} from ${prov.label}` : `No results for “${state.q}”. Try another word or source.`;
-      } catch (err) {
-        if (err.name === 'AbortError') return;
-        console.error(err);
-        if (fresh) $('[data-results]', host).innerHTML = '';
-        status.innerHTML = `${esc(err.message === 'Failed to fetch' ? 'Couldn’t reach the image service. Check your connection, or try the other source.' : err.message)}`;
+      const order = [state.provider, ...Object.keys(PROVIDERS).filter((k) => k !== state.provider)];
+      let lastErr = null, note = '';
+      // On a new search, fall back to the other source if the chosen one is down or overloaded.
+      for (const key of fresh ? order : [state.provider]) {
+        const prov = PROVIDERS[key];
+        try {
+          const { items, hasMore } = await prov.search(state.q, page, { kind: state.kind, signal: ctrl.signal });
+          if (ctrl !== state.ctrl) return;
+          if (key !== state.provider) {
+            note = `${PROVIDERS[state.provider].label} isn’t responding, so these results are from ${prov.label}. `;
+            state.provider = key; form.provider.value = key;
+          }
+          const seen = new Set(state.items.map((x) => x.id));
+          const start = state.items.length;
+          state.items.push(...items.filter((x) => !seen.has(x.id)));
+          state.page = page;
+          state.hasMore = hasMore && items.length > 0;
+          renderResults(fresh, start);
+          status.textContent = note + (state.items.length
+            ? `${state.items.length} result${state.items.length === 1 ? '' : 's'} from ${prov.label}${state.hasMore ? ' · scroll for more' : ''}`
+            : `No results for “${state.q}” on ${prov.label}. Try another word, or change the image type.`);
+          state.loading = false;
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') { if (ctrl === state.ctrl) state.loading = false; return; }
+          console.warn(err);
+          lastErr = err;
+          if (fresh) status.textContent = `${friendly(err)} Trying another source…`;
+        }
       }
+      if (ctrl !== state.ctrl) return;
+      state.loading = false;
+      if (fresh) $('[data-results]', host).innerHTML = '';
+      status.innerHTML = `${esc(friendly(lastErr))} <button type="button" class="btn btn-sm" data-retry>Try again</button>`;
+      $('[data-retry]', status)?.addEventListener('click', () => runSearch(fresh));
+      if (!fresh) $('[data-more]', host).hidden = false;
     }
 
     function skeletons() { return Array.from({ length: 12 }, () => '<li><div class="result skeleton"></div></li>').join(''); }
 
-    function renderResults(focusFirstNew = false) {
+    const itemHTML = (it) => `<li><button type="button" class="result" data-id="${esc(it.id)}" aria-pressed="${state.selected?.id === it.id}" aria-label="${esc(it.title)}${it.creator ? ' by ' + esc(it.creator) : ''}">
+          <img src="${esc(it.thumb)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('li').hidden=true">
+        </button></li>`;
+
+    function renderResults(fresh = true, start = 0) {
       const ul = $('[data-results]', host);
       if (!ul) return;
       if (!state.items.length && !state.q) {
-        ul.innerHTML = '';
         $('[data-status]', host).innerHTML = '';
-        ul.insertAdjacentHTML('beforebegin', '');
         ul.innerHTML = `<li class="suggest-li"><p class="muted">Try a search:</p><div class="chips">${SUGGESTIONS.map((s) => `<button type="button" class="chip" data-suggest="${esc(s)}">${esc(s)}</button>`).join('')}</div></li>`;
         $$('[data-suggest]', ul).forEach((b) => b.addEventListener('click', () => { $('[data-search]', host).q.value = b.dataset.suggest; runSearch(true); }));
         return;
       }
-      ul.innerHTML = state.items.map((it) => `<li><button type="button" class="result" data-id="${esc(it.id)}" aria-pressed="${state.selected?.id === it.id}" aria-label="${esc(it.title)}${it.creator ? ' by ' + esc(it.creator) : ''}">
-          <img src="${esc(it.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.closest('li').hidden=true">
-        </button></li>`).join('');
+      // Append new pages instead of re-rendering, so scroll position and loaded thumbnails are kept.
+      if (fresh) ul.innerHTML = state.items.map(itemHTML).join('');
+      else ul.insertAdjacentHTML('beforeend', state.items.slice(start).map(itemHTML).join(''));
       $('[data-more]', host).hidden = !state.hasMore;
-      if (focusFirstNew && state.items.length) { /* keep focus in search field for quick refine */ }
     }
 
     function selectItem(id) {

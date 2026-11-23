@@ -12,7 +12,7 @@ A clothing design prototyping app that you can install. It works the same on des
   - **Print-on**: a flat ink print.
   - **Patch**: a badge with a stitched border, in rounded, square, circle, oval, shield or die-cut shapes.
   - **Integrated stitch**: knitted into the fabric, built from a stitch grid with a limited yarn palette.
-- **Web image search** inside the app, using Openverse and Wikimedia Commons. Both are free, need no API key and allow cross-origin image access. Credits and licences are kept with each image. You can also upload, drag and drop, paste, or add an image from a URL.
+- **Web image search** inside the app, using Wikimedia Commons (the default) and Openverse. Both are free, need no API key and allow cross-origin image access. If a source is busy or slow (15-second limit), the app switches to the other one automatically. More results load as you scroll. Credits and licences are kept with each image. You can also upload, drag and drop, paste, or add an image from a URL.
 - **Pop-out image editor** (draggable, can be maximised):
   - Cropping with aspect-ratio presets.
   - Rotate 90°, free rotation, flips and transparent-edge trimming.
