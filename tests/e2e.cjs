@@ -41,6 +41,7 @@ process.chdir(OUT);
   await p.screenshot({ path: 'd2-method.png' });
   await p.click('.method-big[data-m="thick"]');
   await p.click('[data-next]');
+  await p.selectOption('#prov', 'openverse'); // mocked source
   await p.fill('input[name=q]', 'badge');
   await p.press('input[name=q]', 'Enter');
   await p.waitForSelector('.result img');
