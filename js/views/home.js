@@ -35,7 +35,7 @@ export async function mount(root) {
         ${CATALOG.map((c) => {
           const g = c.genres[0], t = g.types[0];
           const spec = resolveSpec({ category: c.id, genre: g.id, type: t.id, cut: null, material: null });
-          const p = { ...spec.params, ...c.preview.p };
+          const p = { ...spec.params, ...c.preview.p, artKey: null };
           return `<li><a class="cat-card" href="#/new/${c.id}">
             <span class="cat-art">${garmentSVG({ tpl: c.preview.tpl, params: p, color: c.id === 'shoes' ? '#2f3135' : '#d9d4c7', accent: c.id === 'shoes' ? '#f2f0eb' : '#c0392b', materialId: c.id === 'tops' ? 'cottonJersey' : c.id === 'bottoms' ? 'denim' : c.id === 'hats' ? 'cottonTwill' : 'leather' })}</span>
             <span class="cat-label">${esc(c.label)}</span>

@@ -1,12 +1,13 @@
 // Offline-first service worker for the app shell.
-const VERSION = 'atelier-v5';
+const VERSION = 'atelier-v6';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './css/app.css', './assets/icon.svg',
   './js/main.js', './js/project.js',
   './js/lib/dom.js', './js/lib/store.js', './js/lib/color.js', './js/lib/image.js',
   './js/data/catalog.js', './js/data/materials.js',
   './js/garments/render.js', './js/garments/geometry.js', './js/garments/top.js', './js/garments/bottom.js',
-  './js/garments/hat.js', './js/garments/shoe.js', './js/garments/textures.js',
+  './js/garments/hat.js', './js/garments/shoe.js', './js/garments/textures.js', './js/garments/custom.js',
+  './assets/garments/manifest.json',
   './js/views/home.js', './js/views/wizard.js', './js/views/designer.js',
   './js/components/methods.js', './js/components/add-artwork.js', './js/components/image-search.js',
   './js/editor/editor.js', './js/editor/filters.js', './js/editor/vectorize.js', './js/editor/selection.js',

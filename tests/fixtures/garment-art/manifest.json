@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "garments": {
+    "shoes/cowboyBoot": { "front": "shoes/cowboyBoot-front.svg" },
+    "shoes/broken": { "front": "shoes/missing.svg" }
+  }
+}

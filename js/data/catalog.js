@@ -703,7 +703,7 @@ export function resolveSpec(sel) {
   const cut = type && getCut(type, sel.cut);
   const mat = sel.material && MATERIALS[sel.material];
   if (!type) return null;
-  const params = { ...(type.p || {}), ...((cut && cut.p) || {}) };
+  const params = { ...(type.p || {}), ...((cut && cut.p) || {}), artKey: `${cat.id}/${type.id}`, artCut: cut?.id || null };
   return { cat, genre, type, cut, material: mat, materialId: sel.material, tpl: type.tpl, params };
 }
 

@@ -6,6 +6,7 @@ import { shoe } from './shoe.js';
 import { textureMarkup, patternOnly } from './textures.js';
 import { mix, isDark } from '../lib/color.js';
 import { MATERIALS } from '../data/materials.js';
+import { customArt } from './custom.js';
 
 const GEN = { top, bottom, hat, shoe };
 const geoCache = new Map();
@@ -170,6 +171,8 @@ function soleColor(fill, accent) {
  */
 export function garmentLayers({ tpl, params, view = 'front', color, accent, materialId }) {
   const uid = (++uidSeq).toString(36);
+  const art = customArt(params, view);
+  if (art) return customLayers({ art, tpl, color, accent, materialId, uid });
   const mat = MATERIALS[materialId] || {};
   const p = { ...params };
   if (mat.quilt && tpl === 'top' && !p.quilt) p.quilt = 46;
@@ -253,6 +256,58 @@ export function garmentLayers({ tpl, params, view = 'front', color, accent, mate
   return { viewBox: `${r(box.x)} ${r(box.y)} ${r(box.w)} ${r(box.h)}`, box, defs, under, over, clipId, mirror, uid, palette: c };
 }
 const r = (n) => Math.round(n * 10) / 10;
+
+/**
+ * Layers for a drop-in custom drawing (see custom.js). Same contract as garmentLayers:
+ * the app paints the outline with the garment colour + material, the drawing supplies
+ * accent shapes, translucent shading/details (above artwork) and unclipped extras.
+ */
+function customLayers({ art, tpl, color, accent, materialId, uid }) {
+  const mat = MATERIALS[materialId] || {};
+  const box = art.box;
+  const base = color || mat.color || '#cccccc';
+  const acc = accent || '#f2f2f2';
+  const c = palette(base, acc, materialId);
+  const sc = Math.max(box.w, box.h) / 520;
+  const mt = art.mirrored ? ` transform="matrix(-1 0 0 1 ${2 * (box.x + box.w / 2)} 0)"` : '';
+  const clipId = `clip-${uid}`;
+  const pad = Math.max(box.w, box.h) * 0.1;
+  const tex = textureMarkup(mat.tex || 'jersey', uid, sc * (tpl === 'shoe' ? 0.8 : 1), { x: box.x - pad, y: box.y - pad, w: box.w + pad * 2, h: box.h + pad * 2 });
+  const bx = `x="${box.x - pad}" y="${box.y - pad}" width="${box.w + pad * 2}" height="${box.h + pad * 2}"`;
+  const shapes = art.outline.join('');
+  // <clipPath> may only contain shapes (no <g>), so the mirror transform goes on each shape
+  const mtx = art.mirrored ? `matrix(-1 0 0 1 ${2 * (box.x + box.w / 2)} 0)` : '';
+  const clipShapes = art.outline.map((el) => {
+    if (!mtx) return el;
+    return /\stransform="/.test(el) ? el.replace(/\stransform="([^"]*)"/, ` transform="${mtx} $1"`) : el.replace(/^<([a-zA-Z]+)/, `<$1 transform="${mtx}"`);
+  }).join('');
+  const defs = `
+    <clipPath id="${clipId}">${clipShapes}</clipPath>
+    ${art.defs}
+    ${tex.defs}
+    <radialGradient id="shl-${uid}" cx="0.36" cy="0.2" r="0.75">
+      <stop offset="0" stop-color="#fff" stop-opacity="${c.dark ? 0.1 : 0.12}"/><stop offset="0.55" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="fb8-${uid}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${sc * 8}"/></filter>
+    <filter id="gsh-${uid}" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur stdDeviation="${sc * 7}"/></filter>`;
+  const under = `<g filter="url(#gsh-${uid})" opacity="${tpl === 'shoe' || tpl === 'hat' ? 0.22 : 0.16}"><g${mt}><g transform="translate(${3 * sc} ${8 * sc})" fill="#000">${shapes}</g></g></g>
+    <g clip-path="url(#${clipId})"><g${mt}>
+      <rect ${bx} fill="${base}"/>
+      ${art.accent ? `<g fill="${acc}" stroke="none">${art.accent}</g>` : ''}
+      ${tex.overlay}
+    </g></g>`;
+  const over = `<g clip-path="url(#${clipId})"><g${mt}>
+      ${art.shading}
+      ${art.details}
+      <g filter="url(#fb8-${uid})" fill="none" stroke="#000" stroke-width="${16 * sc}" opacity="${c.dark ? 0.26 : 0.16}">${shapes}</g>
+      <rect x="${box.x}" y="${box.y}" width="${box.w}" height="${box.h}" fill="url(#shl-${uid})"/>
+    </g></g>
+    <g${mt}>
+      <g fill="none" stroke="${mix(base, '#000000', 0.48)}" stroke-width="${1.1 * sc}" stroke-linejoin="round" opacity="0.75">${shapes}</g>
+      ${art.outside}
+    </g>`;
+  return { viewBox: art.viewBox, box, defs, under, over, clipId, mirror: !!art.mirrored, uid, palette: c, custom: true };
+}
 
 /** Convenience: full standalone SVG string. */
 export function garmentSVG(opts, { elements = '', extraDefs = '', title = '', className = '' } = {}) {
