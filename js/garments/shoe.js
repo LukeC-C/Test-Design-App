@@ -90,7 +90,11 @@ export function shoe(params) {
       if (p.zip) D(M(P(hx + 30, gy - hh - p.collar + 8)) + L(P(hx + 50, gy - hh - 30)), 'zip');
       D(M(P(hx + 6, gy - hh - p.collar + 10)) + L(P(hx + 110, gy - hh - p.collar + 14)), 'stitch');
     }
-    return { outline, parts, details: det, outside: out, ground: gy };
+    const folds = [
+      { d: M(P(240, gy - 62)) + Q(P(330, gy - 52), P(tx + 4, gy - 22)), k: 'light' },
+      { d: M(P(hx + 20, gy - hh - 40)) + Q(P(hx + 80, gy - hh * 0.6 - 30), P(220, gy - hh * 0.3 - 40)), k: 'lightSoft' },
+    ];
+    return { outline, parts, details: det, outside: out, ground: gy, folds };
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -209,5 +213,12 @@ export function shoe(params) {
     if (p.crepe) D(M(P(hx, gy - s * 0.7)) + L(P(tx, gy - s * 0.7)), 'sole-line');
   }
   if (p.gum) parts[parts.length - 1].fill = 'gum';
-  return { outline, parts, details: det, outside: out, ground: gy };
+  const folds = sandalLike ? [] : [
+    { d: M(P(tx - 140, base - 58)) + Q(P(tx - 70, base - 66), P(tx - 8, base - 32)), k: 'light' },
+    { d: M(P(hx + 10, baseH - hh * 0.75)) + Q(P(hx + 40, baseH - hh * 0.5), P(hx + 120, base - 40)), k: 'lightSoft' },
+    { d: M(P(290, base - 66)) + Q(P(302, base - 40), P(296, base - 12)), k: 'crease' },
+    { d: M(P(310, base - 60)) + Q(P(320, base - 36), P(316, base - 10)), k: 'crease' },
+    { d: M(P(hx, base - 6)) + L(P(tx, base - 6)), k: 'shadowSoft' },
+  ];
+  return { outline, parts, details: det, outside: out, ground: gy, folds };
 }

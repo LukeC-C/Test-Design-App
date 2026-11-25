@@ -11,7 +11,7 @@ export function bottom(params, view) {
   const p = { ...BOTTOM_DEFAULTS, ...params };
   const back = view === 'back';
   const cx = 200, wy = 40;
-  const det = [], out = [], parts = [];
+  const det = [], out = [], parts = [], folds = [];
   const D = (d, s, extra) => det.push({ d, s, ...extra });
   const ww = p.waistW, hw = p.hipW, cy = wy + p.rise, hy = p.len;
   const wbH = p.waistband === 'none' ? 0 : p.waistband === 'high' ? 50 : p.waistband === 'board' ? 26 : 32;
@@ -52,6 +52,12 @@ export function bottom(params, view) {
       leftPts[0] = Hl;
       outline = M(P(cx - ww, wy)) + Q(P(cx, wy + 4), P(cx + ww, wy)) + spline(rightPts, 0.7) + hemD + spline(leftPts, 0.7) + ' Z';
     }
+    // ── natural drape ──
+    for (let i = -2; i <= 2; i++) {
+      const t = i / 2.6;
+      folds.push({ d: M(P(cx + t * hw * 0.8, hipY + 10)) + Q(P(cx + t * hem * 0.85 + 6, (hipY + hy) / 2), P(cx + t * hem * 0.92, hy - 8)), k: i % 2 ? 'shadow' : (i < 0 ? 'light' : 'lightSoft') });
+    }
+    folds.push({ d: M(P(cx - ww, wy + wbH + 4)) + Q(P(cx, wy + wbH + 10), P(cx + ww, wy + wbH + 4)), k: 'shadowSoft' });
     // details
     if (p.pleated) {
       const n = p.pleated;
@@ -94,6 +100,22 @@ export function bottom(params, view) {
     const leftOuter = outerR.map(([x, y]) => [2 * cx - x, y]).reverse();
     const left = spline(leftInner, 0.8) + Q(P(cx - legC - sp, hy + 4), leftOuter[0]) + spline(leftOuter, 0.85);
     outline = M(P(cx - ww, wy)) + Q(P(cx, wy + 4), P(cx + ww, wy)) + right + left + ' Z';
+    // ── natural folds ──
+    for (const s of [1, -1]) {
+      const fx = (x) => cx + s * x;
+      // whiskers radiating from the crotch
+      for (let i = 0; i < 3; i++) folds.push({ d: M(P(fx(10 + i * 7), cy + 4 + i * 10)) + Q(P(fx(30 + i * 10), cy - 6 + i * 10), P(fx(46 + i * 12), cy - 22 + i * 12)), k: 'crease' });
+      folds.push({ d: M(P(fx(8), cy + 8)) + Q(P(fx(34), cy + 4), P(fx(56), cy - 20)), k: 'shadow' });
+      if (!isShort) {
+        const kx = legC + sp * 0.6;
+        folds.push({ d: M(P(fx(kx - p.knee * 0.8), kneeY - 6)) + Q(P(fx(kx), kneeY + 6), P(fx(kx + p.knee * 0.7), kneeY - 10)), k: 'shadow' });
+        folds.push({ d: M(P(fx(kx - p.knee * 0.6), kneeY + 14)) + Q(P(fx(kx), kneeY + 24), P(fx(kx + p.knee * 0.5), kneeY + 8)), k: 'crease' });
+        for (let j = 0; j < 2; j++) folds.push({ d: M(P(fx(legC + sp - p.hem * 0.8), hy - 40 - j * 34)) + Q(P(fx(legC + sp), hy - 30 - j * 34), P(fx(legC + sp + p.hem * 0.7), hy - 46 - j * 34)), k: 'crease' });
+      }
+      // light down the front of each leg (stronger on the viewer's left)
+      folds.push({ d: M(P(fx(legC - 6), hipY + 10)) + Q(P(fx(legC - 10 + sp * 0.4), (hipY + hy) / 2), P(fx(legC - 4 + sp), hy - 20)), k: s < 0 ? 'light' : 'lightSoft' });
+    }
+    folds.push({ d: M(P(cx - ww, wy + wbH + 4)) + Q(P(cx, wy + wbH + 10), P(cx + ww, wy + wbH + 4)), k: 'shadowSoft' });
 
     // overalls bib
     if (p.overalls) {
@@ -226,5 +248,5 @@ export function bottom(params, view) {
       for (const x of xs) D(rect(cx + x - 4, wy - 3, 8, wbH + 8, 1.5), 'loop-tab');
     }
   }
-  return { outline, parts, details: det, outside: out };
+  return { outline, parts, details: det, outside: out, folds };
 }

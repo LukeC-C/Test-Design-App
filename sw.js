@@ -1,5 +1,5 @@
 // Offline-first service worker for the app shell.
-const VERSION = 'atelier-v3';
+const VERSION = 'atelier-v4';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './css/app.css', './assets/icon.svg',
   './js/main.js', './js/project.js',

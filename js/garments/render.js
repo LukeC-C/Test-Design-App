@@ -99,9 +99,10 @@ function palette(base, accent, materialId) {
 function styleAttrs(s, c, uid) {
   const S = (o) => Object.entries(o).map(([k, v]) => `${k}="${v}"`).join(' ');
   switch (s) {
-    case 'seam': return [S({ fill: 'none', stroke: c.seam, 'stroke-width': 1.4, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', opacity: 0.85 })];
+    // seams read as slightly raised: a dark line with a faint highlight just below-right
+    case 'seam': return [S({ fill: 'none', stroke: '#ffffff', 'stroke-width': 1.1, opacity: c.dark ? 0.08 : 0.35, transform: 'translate(0.8 0.9)', 'stroke-linecap': 'round' }), S({ fill: 'none', stroke: c.seam, 'stroke-width': 1.1, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', opacity: 0.7 })];
     case 'seam-soft': return [S({ fill: 'none', stroke: c.seam, 'stroke-width': 1, opacity: 0.5, 'stroke-linecap': 'round' })];
-    case 'stitch': return [S({ fill: 'none', stroke: c.stitch, 'stroke-width': 0.9, 'stroke-dasharray': '3 2.4', opacity: 0.8 })];
+    case 'stitch': return [S({ fill: 'none', stroke: c.stitch, 'stroke-width': 0.8, 'stroke-dasharray': '2.6 2.2', opacity: 0.6, 'stroke-linecap': 'round' })];
     case 'stitch-contrast': return [S({ fill: 'none', stroke: '#d9a441', 'stroke-width': 1.2, 'stroke-dasharray': '3.4 2.4' })];
     case 'stitch-heavy': return [S({ fill: 'none', stroke: c.stitch, 'stroke-width': 1.6, 'stroke-dasharray': '4 3' })];
     case 'rib': return [S({ fill: c.base, stroke: c.seam, 'stroke-width': 1, 'stroke-opacity': 0.7 }), S({ fill: `url(#rib-${uid})`, stroke: 'none' })];
@@ -184,6 +185,7 @@ export function garmentLayers({ tpl, params, view = 'front', color, accent, mate
   const texScale = tpl === 'hat' ? 0.9 : tpl === 'shoe' ? 0.8 : 1;
   const tex = textureMarkup(mat.tex || 'jersey', uid, texScale, { x: box.x - 50, y: box.y - 50, w: box.w + 100, h: box.h + 100 });
   const bx = `x="${box.x - 50}" y="${box.y - 50}" width="${box.w + 100}" height="${box.h + 100}"`;
+  const sc = Math.max(box.w, box.h) / 520; // keeps blur & stroke sizes proportional across garment families
 
   const defs = `
     <clipPath id="${clipId}">${g.subpaths.map((d) => `<path d="${d}"${mt}/>`).join('')}</clipPath>
@@ -191,17 +193,36 @@ export function garmentLayers({ tpl, params, view = 'front', color, accent, mate
     ${patternOnly('rib', `rib-${uid}`)}
     ${patternOnly('mesh', `mesh-${uid}`)}
     ${patternOnly('fur', `fur-${uid}`)}
-    <linearGradient id="shx-${uid}" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#000" stop-opacity="0.16"/>
-      <stop offset="0.22" stop-color="#000" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#fff" stop-opacity="0.07"/>
-      <stop offset="0.78" stop-color="#000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.18"/>
+    <radialGradient id="shl-${uid}" cx="0.36" cy="0.2" r="0.75">
+      <stop offset="0" stop-color="#fff" stop-opacity="${c.dark ? 0.12 : 0.16}"/>
+      <stop offset="0.55" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shy-${uid}" x1="0" x2="0.25" y1="0" y2="1">
+      <stop offset="0.45" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.12"/>
     </linearGradient>
-    <linearGradient id="shy-${uid}" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity="0.07"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.1"/>
-    </linearGradient>`;
+    <filter id="fb1-${uid}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${sc * 0.7}"/></filter>
+    <filter id="fb4-${uid}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${sc * 4}"/></filter>
+    <filter id="fb8-${uid}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${sc * 8}"/></filter>
+    <filter id="gsh-${uid}" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur stdDeviation="${sc * 7}"/></filter>
+    <filter id="mot-${uid}" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="${0.008 / sc}" numOctaves="2" seed="5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.2 -0.08"/>
+    </filter>`;
+
+  // soft folds & light, grouped so each blur filter runs once
+  const folds = g.folds || [];
+  const fg = (kinds, attrs, filterId) => {
+    const ds = folds.filter((f) => kinds.includes(f.k)).map((f) => f.d);
+    return ds.length ? `<g filter="url(#${filterId}-${uid})" ${attrs}>${ds.map((d) => `<path d="${d}"/>`).join('')}</g>` : '';
+  };
+  const foldMarkup =
+    fg(['shadow'], `fill="none" stroke="#000" stroke-width="${7 * sc}" stroke-linecap="round" opacity="${c.dark ? 0.28 : 0.16}"`, 'fb4') +
+    fg(['shadowSoft'], `fill="none" stroke="#000" stroke-width="${12 * sc}" stroke-linecap="round" opacity="${c.dark ? 0.22 : 0.1}"`, 'fb8') +
+    fg(['crease'], `fill="none" stroke="#000" stroke-width="${1.4 * sc}" stroke-linecap="round" opacity="${c.dark ? 0.3 : 0.2}"`, 'fb1') +
+    fg(['light'], `fill="none" stroke="#fff" stroke-width="${12 * sc}" stroke-linecap="round" opacity="${c.dark ? 0.1 : 0.2}"`, 'fb8') +
+    fg(['lightSoft'], `fill="none" stroke="#fff" stroke-width="${8 * sc}" stroke-linecap="round" opacity="${c.dark ? 0.06 : 0.12}"`, 'fb8');
+  const edgeShade = g.subpaths.map((d) => `<path d="${d}"/>`).join('');
 
   const paths = (list, filter) => list.filter(filter || (() => true)).map((it) => styleAttrs(it.s, c, uid).map((a) => `<path d="${it.d}" ${a}/>`).join('')).join('');
   const accentParts = g.parts.filter((x) => x.fill === 'accent').map((x) => `<path d="${x.d}" fill="${acc}"/>`).join('');
@@ -210,19 +231,23 @@ export function garmentLayers({ tpl, params, view = 'front', color, accent, mate
     return `<path d="${x.d}" fill="${sc}" stroke="${isDark(sc) ? mix(sc, '#ffffff', 0.25) : mix(sc, '#000000', 0.3)}" stroke-width="1.2"/>`;
   }).join('');
 
-  const under = `<g clip-path="url(#${clipId})"><g${mt}>
+  const under = `<g${mt} filter="url(#gsh-${uid})" opacity="${tpl === 'shoe' || tpl === 'hat' ? 0.22 : 0.16}" transform-origin="center"><g transform="translate(${3 * sc} ${8 * sc})">${edgeShade.replace(/<path /g, '<path fill="#000" ')}</g></g>
+    <g clip-path="url(#${clipId})"><g${mt}>
       <rect ${bx} fill="${base}"/>
       ${accentParts}
+      <rect ${bx} filter="url(#mot-${uid})"/>
       ${tex.overlay}
     </g></g>`;
   const over = `<g clip-path="url(#${clipId})"><g${mt}>
+      ${foldMarkup}
       ${paths(g.details)}
       ${soleParts}
-      <rect ${bx} fill="url(#shx-${uid})" style="mix-blend-mode:multiply"/>
-      <rect ${bx} fill="url(#shy-${uid})"/>
+      <g filter="url(#fb8-${uid})" fill="none" stroke="#000" stroke-width="${16 * sc}" opacity="${c.dark ? 0.3 : 0.2}">${edgeShade}</g>
+      <rect x="${box.x}" y="${box.y}" width="${box.w}" height="${box.h}" fill="url(#shl-${uid})"/>
+      <rect x="${box.x}" y="${box.y}" width="${box.w}" height="${box.h}" fill="url(#shy-${uid})"/>
     </g></g>
     <g${mt}>
-      ${g.subpaths.map((d) => `<path d="${d}" fill="none" stroke="${c.seam}" stroke-width="1.6" stroke-linejoin="round" opacity="0.9"/>`).join('')}
+      ${g.subpaths.map((d) => `<path d="${d}" fill="none" stroke="${c.dark ? mix(base, '#000000', 0.5) : mix(base, '#000000', 0.45)}" stroke-width="1.1" stroke-linejoin="round" opacity="0.75"/>`).join('')}
       ${paths(g.outside)}
     </g>`;
   return { viewBox: `${r(box.x)} ${r(box.y)} ${r(box.w)} ${r(box.h)}`, box, defs, under, over, clipId, mirror, uid, palette: c };
