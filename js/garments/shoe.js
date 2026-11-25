@@ -103,12 +103,23 @@ export function shoe(params) {
   const heel = p.heel || 0;
   const base = gy - s;           // top of sole at forefoot
   const baseH = base - heel;     // top of sole at heel
-  const tt = toeTip(base);
   const sandalLike = ['slide', 'flipflop', 'sandal'].includes(k);
+  // a gently curved strap band from a to b, thickness t, bowing by `bow`
+  const band = (a, b, t, bow) => {
+    const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + bow];
+    return M(a) + Q(P(m[0], m[1]), b) + L(P(b[0] + 2, b[1] + t)) + Q(P(m[0], m[1] + t), P(a[0], a[1] + t)) + ' Z';
+  };
+  const spring = sandalLike ? 4 : 12;   // toe spring: the forefoot lifts off the ground
+  const tt = toeTip(base - spring * 0.7);
 
   // Sole
-  const soleTopPts = [P(hx - 6, baseH), P(200, base - heel * 0.4), P(tx - 40, base), P(tt.tip[0] + 2, base - 4)];
-  sole = M(soleTopPts[0]) + spline(soleTopPts, 0.8) + Q(P(tt.tip[0] + 14, gy - s * 0.4), P(tt.tip[0] - 14, gy - 2)) + L(P(hx + 20, gy)) + Q(P(hx - 12, gy - 2), soleTopPts[0]) + ' Z';
+  const tipX = tt.tip[0];
+  const soleTopPts = [P(hx - 4, baseH), P(hx + 80, baseH + heel * 0.05), P(240, base - heel * 0.2), P(tx - 60, base - 1), P(tipX - 2, base - spring)];
+  // flat under heel and ball, then curving up into the toe; rounded heel edge
+  sole = M(soleTopPts[0]) + spline(soleTopPts, 0.8)
+    + C(P(tipX + 10, base - spring + 2), P(tipX + 8, gy - spring * 0.6), P(tipX - 14, gy - spring * 0.35))
+    + Q(P(tx - 70, gy + 1), P(tx - 110, gy)) + L(P(hx + 26, gy))
+    + C(P(hx - 6, gy), P(hx - 12, gy - s * 0.5), soleTopPts[0]) + ' Z';
   if (heel && !p.wedge) {
     sole = M(soleTopPts[0]) + spline(soleTopPts, 0.8) + Q(P(tt.tip[0] + 14, gy - s * 0.4), P(tt.tip[0] - 14, gy - 2)) + L(P(250, gy)) + Q(P(220, gy - 4), P(190, gy - s - heel * 0.4 + 4)) + L(P(hx + 64, baseH + s)) + L(P(hx + 60, gy)) + L(P(hx + 2, gy)) + L(P(hx - 6, baseH)) + ' Z';
   }
@@ -126,16 +137,23 @@ export function shoe(params) {
       const n = p.straps || 2;
       const xs = along(P(220, 0), P(420, 0), n, true).map((q) => q[0]);
       for (const x of xs) {
-        const st = poly([P(x - 14, base), P(x - 10, base - 60 + (x - 220) * 0.12), P(x + 10, base - 62 + (x - 220) * 0.12), P(x + 14, base)]);
+        // each strap arches over the foot instead of standing up as a block
+        const top = base - 58 + (x - 220) * 0.1;
+        const st = M(P(x - 16, base)) + C(P(x - 14, top + 10), P(x - 8, top), P(x, top)) + C(P(x + 8, top), P(x + 14, top + 10), P(x + 16, base))
+          + L(P(x + 8, base)) + C(P(x + 8, top + 20), P(x - 8, top + 20), P(x - 8, base)) + ' Z';
         upper += ' ' + st;
       }
       if (p.closedToe) upper += ' ' + M(P(380, base)) + spline([P(380, base), P(400, base - 42), tt.tip]) + L(P(tt.tip[0], base)) + ' Z';
       if (p.strap === 'ankle') {
-        upper += ' ' + poly([P(hx + 2, baseH), P(hx, baseH - 70), P(hx + 18, baseH - 72), P(hx + 24, baseH)]);
-        upper += ' ' + poly([P(hx, baseH - 74), P(hx + 120, baseH - 90), P(hx + 124, baseH - 74), P(hx + 4, baseH - 58)]);
+        // heel quarter rising from the footbed, and a strap that wraps around the ankle
+        upper += ' ' + M(P(hx + 2, baseH)) + Q(P(hx - 6, baseH - 40), P(hx + 2, baseH - 72)) + L(P(hx + 20, baseH - 72)) + Q(P(hx + 14, baseH - 36), P(hx + 26, baseH)) + ' Z';
+        upper += ' ' + band(P(hx - 2, baseH - 66), P(hx + 122, baseH - 84), 15, -10);
         D(rect(hx + 96, baseH - 92, 14, 20, 2), 'buckle');
       }
-      if (p.gladiator) for (let i = 1; i <= 3; i++) upper += ' ' + poly([P(hx + 2, baseH - 74 - i * 34), P(hx + 112, baseH - 90 - i * 34), P(hx + 114, baseH - 78 - i * 34), P(hx + 4, baseH - 62 - i * 34)]);
+      if (p.gladiator) {
+        for (let i = 1; i <= 3; i++) upper += ' ' + band(P(hx - 2, baseH - 66 - i * 34), P(hx + 116, baseH - 82 - i * 34), 13, -9);
+        upper += ' ' + M(P(hx + 2, baseH - 60)) + Q(P(hx - 4, baseH - 120), P(hx + 4, baseH - 182)) + L(P(hx + 16, baseH - 182)) + Q(P(hx + 10, baseH - 120), P(hx + 16, baseH - 60)) + ' Z';
+      }
     }
   } else if (k === 'clog' || k === 'mule') {
     upper = M(P(hx + 120, base)) + spline([P(hx + 120, base), P(hx + 130, base - 74), P(250, base - 92), P(350, base - 64), tt.top, tt.tip]) + L(P(tt.tip[0] - 2, base)) + ' Z';
@@ -150,12 +168,14 @@ export function shoe(params) {
       const sl = p.slim ? 0.84 : 1;
       const topY = baseH - hh;
       const tongue = k === 'sneaker' || (k === 'oxford' && p.laces !== false);
-      pts = [P(hx + 4, baseH), P(hx - 8, baseH - hh * 0.45), collarBack, P(hx + 96 + (p.collar || 0) * 0.1, topY + 20 + (p.collar > 30 ? 4 : 0))];
-      if (tongue) pts.push(P(hx + 124, topY - (k === 'sneaker' ? 10 : -6)), P(hx + 186, base - 88 * sl), P(296, base - 68 * sl), tt.top, tt.tip);
+      // rounded heel counter, a dipped ankle collar, tongue, sloping lace line and a full toe box
+      pts = [P(hx + 4, baseH), P(hx - 11, baseH - hh * 0.42), P(hx + 6, baseH - hh), P(hx + 92 + (p.collar || 0) * 0.1, topY + 28 + (p.collar > 30 ? 4 : 0))];
+      if (tongue) pts.push(P(hx + 126, topY - (k === 'sneaker' ? 10 : -6)), P(hx + 200, base - 86 * sl), P(300, base - 66 * sl), tt.top, tt.tip);
       else pts.push(P(hx + 160, base - 74 * sl), P(290, base - 70 * sl), tt.top, tt.tip);
+      pts.push(P(tt.tip[0] - 1, base - spring - 3));
       if (p.sockCollar) pts.splice(2, 2, P(hx + 4, topY - 30), P(hx + 104, topY - 14));
     }
-    upper = M(pts[0]) + spline(pts, 0.85) + L(P(tt.tip[0] - 4, base)) + spline([P(tt.tip[0] - 4, base), P(tx - 40, base + 2), P(200, base - heel * 0.4 + 2), P(hx + 4, baseH)].slice(0), 0.8) + ' Z';
+    upper = M(pts[0]) + spline(pts, 0.85) + L(P(tt.tip[0] - 6, base - spring + 1)) + spline([P(tt.tip[0] - 6, base - spring + 1), P(tx - 60, base + 2), P(200, base - heel * 0.4 + 2), P(hx + 4, baseH)], 0.8) + ' Z';
 
     // ── Upper details ──
     const throatStart = bootLike && k === 'boot' ? P(hx + 116, baseH - (p.collar || 120) + 10) : P(hx + 122, baseH - hh + 6);

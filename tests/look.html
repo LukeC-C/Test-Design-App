@@ -1,19 +1,29 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Garment look check (dev)</title>
-<style>body{margin:0;background:#eceae4;display:grid;grid-template-columns:repeat(4,1fr);gap:0}svg{width:100%;height:440px;display:block}</style></head>
+<style>body{margin:0;background:#eceae4;display:grid;grid-template-columns:repeat(4,1fr)}figure{margin:0}svg{width:100%;height:300px;display:block}figcaption{font:12px system-ui;text-align:center;padding-bottom:6px}</style></head>
 <body><script type="module">
-import { resolveSpec } from '../js/data/catalog.js';
+// Dev page: large renders for visual checks. ?set=mix|hats|shoes  &view=front|back
+import { CATALOG, resolveSpec, getCuts } from '../js/data/catalog.js';
 import { garmentSVG } from '../js/garments/render.js';
-const items = [
+const q = new URLSearchParams(location.search);
+const set = q.get('set') || 'mix', v = q.get('view') || 'front';
+let items;
+if (set === 'mix') items = [
   ['tops','tees','tshirt','classic','cottonJersey','#f4f4f2'], ['tops','sweaters','hoodie','dropShoulder','cottonFleece','#5b6b7c'],
   ['tops','outerwear','denimJacket','classic','denim',null], ['tops','shirts','buttonUp','classic','oxfordCloth',null],
   ['bottoms','denim','fivePocket','straight','midWash',null], ['bottoms','skirts','midi','pleated','satin','#7a2f2f'],
   ['hats','caps','baseball','structured','cottonTwill','#1f2c45'], ['shoes','sneakers','lowTop','classic','leather','#f2f0eb'],
 ];
-const v = new URLSearchParams(location.search).get('view') || 'front';
+else {
+  const cat = CATALOG.find((c) => c.id === set);
+  items = cat.genres.flatMap((g) => g.types.map((t) => [set, g.id, t.id, getCuts(t)[0].id, null, null]));
+}
 document.body.innerHTML = items.map(([category, genre, type, cut, material, color]) => {
-  const s = resolveSpec({ category, genre, type, cut, material });
-  return garmentSVG({ tpl: s.tpl, params: s.params, view: v, materialId: material, color: color || s.material.color, accent: s.tpl === 'shoe' ? '#e9e6df' : '#c0392b' });
+  const s = resolveSpec({ category, genre, type, cut, material: material || undefined });
+  const mat = material || (s.type && (s.type.materials && null));
+  const mid = material || ({ hats: 'cottonTwill', shoes: 'leather' }[category]);
+  const col = color || (category === 'shoes' ? '#6b4a33' : '#2f4a6b');
+  return `<figure>${garmentSVG({ tpl: s.tpl, params: s.params, view: v, materialId: mid, color: col, accent: s.tpl === 'shoe' ? '#ece8df' : '#c0392b' })}<figcaption>${s.type.label}</figcaption></figure>`;
 }).join('');
 document.title = 'done';
 </script></body></html>
