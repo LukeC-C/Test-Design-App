@@ -1,6 +1,8 @@
 // Parametric tops: tees, sweaters, hoodies, shirts, jackets, coats, tanks.
 import { P, M, L, Q, C, spline, smooth, poly, mirrorX, lerp, add, sub, norm, circle, rect, along } from './geometry.js';
 
+const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+
 const SLEEVES = {
   cap:    { L: 36,  a: 64, cw: 80 },
   short:  { L: 98,  a: 52, cw: 70 },
@@ -72,13 +74,20 @@ export function top(params, view) {
       const midIn = add(lerp(A, C2, 0.55), n, -14 * (p.sleeveW - 1) * 2);
       right = L(S) + spline([S, mid, C1], 0.9) + L(C2) + spline([C2, midIn, A], 0.9) + sideToHem(A);
     } else {
-      right = L(S, C1, C2, A) + sideToHem(A);
+      // Curved shoulder, gently tapered sleeve, rounded cuff and a soft armpit instead of hard corners.
+      const A1 = lerp(C2, A, 0.84), A2 = P(A[0] - 1, A[1] + 14);
+      right = Q(P(mid(NR, S)[0], mid(NR, S)[1] - 4), S)
+        + Q(add(mid(S, C1), n, 3.5), C1)
+        + Q(add(mid(C1, C2), d, 3), C2)
+        + Q(add(mid(C2, A1), n, -2), A1)
+        + Q(A, A2)
+        + sideToHem(A2);
     }
   }
 
   function sideToHem(from) {
-    const waist = P(cx + Math.min(w, hw) - (p.flare < 0.95 ? 4 : 0), (from[1] + Lh) / 2 + 20);
-    if (Math.abs(hw - w) < 2) return L(H);
+    // a slight waist curve even on straight garments reads as fabric rather than a box
+    const waist = P(cx + Math.min(w, hw) - 3 - (p.flare < 0.95 ? 4 : 0), (from[1] + Lh) / 2 + 20);
     return spline([from, waist, H], 0.8);
   }
 
@@ -530,7 +539,39 @@ export function top(params, view) {
     D(M(P(cx - nw * 0.5, sy - 2)) + Q(P(cx, sy + 30), P(cx + nw * 0.5, sy - 2)), 'binding-line');
   }
 
-  return { outline, parts, details: det, outside: out };
+  // ── Natural fabric folds & light (soft shading, drawn over artwork too) ──
+  const folds = [];
+  const F = (d, k, both = true) => { folds.push({ d, k }); if (both) folds.push({ d: mirrorD(d, cx), k }); };
+  const bodyTop = topBodyY ?? (sy + 40);
+  const hemY = ribHem ? Lh - 28 : Lh - 6;
+  if (sleeve) {
+    const { S: s0, C1, C2, A: a0, n } = sleeve;
+    // drag folds from the armpit into the body
+    F(M(P(a0[0] - 4, a0[1] + 8)) + Q(P(a0[0] - 26, a0[1] + 46), P(a0[0] - 16, Math.min(hemY - 10, a0[1] + 104))), 'shadow');
+    F(M(P(a0[0] - 2, a0[1] + 4)) + Q(P(a0[0] - 16, a0[1] + 26), P(a0[0] - 12, a0[1] + 52)), 'crease');
+    // sleeve folds
+    const ts = ['long', 'threeq', 'elbow'].includes(p.sleeve) ? [0.38, 0.62, 0.84] : p.sleeve === 'short' ? [0.45] : [];
+    for (const t of ts) {
+      const a = lerp(a0, C2, t), b = lerp(s0, C1, t - 0.05);
+      const e = lerp(a, b, 0.62);
+      F(M(a) + Q(add(mid(a, e), n, -4), e), 'shadow');
+      F(M(lerp(a, e, 0.1)) + Q(add(mid(a, e), n, -3), lerp(a, e, 0.8)), 'crease');
+    }
+    // light catching the top of the (viewer's left) shoulder and sleeve
+    const ls = M(lerp(NR, s0, 0.35)) + Q(add(s0, n, -10), add(lerp(s0, C1, 0.55), n, -12));
+    folds.push({ d: mirrorD(ls, cx), k: 'light' });
+    folds.push({ d: ls, k: 'lightSoft' });
+  }
+  // body drape: soft shadows near the sides, a highlight left of centre (light from upper left)
+  F(M(P(cx + w * 0.64, bodyTop + 60)) + Q(P(cx + w * 0.5, (bodyTop + hemY) / 2 + 20), P(cx + hw * 0.6, hemY)), 'shadow');
+  folds.push({ d: M(P(cx - w * 0.3, bodyTop + 40)) + Q(P(cx - w * 0.36, (bodyTop + hemY) / 2), P(cx - w * 0.26, hemY - 30)), k: 'light' });
+  folds.push({ d: M(P(cx + w * 0.12, bodyTop + 70)) + Q(P(cx + w * 0.2, (bodyTop + hemY) / 2 + 30), P(cx + w * 0.1, hemY - 20)), k: 'shadowSoft' });
+  // small ripples at the hem
+  for (const f of [-0.62, -0.2, 0.28, 0.7]) folds.push({ d: M(P(cx + hw * f, hemY - 2)) + Q(P(cx + hw * f + 5, hemY - 26), P(cx + hw * f + 2, hemY - 48)), k: 'crease' });
+  // gentle shadow just below the neckline
+  if (!strapMode || strapMode === 'wide') folds.push({ d: M(P(cx - nw - 4, sy + 6)) + Q(P(cx, sy + (p.neck === 'v' ? 70 : 42)), P(cx + nw + 4, sy + 6)), k: 'shadowSoft' });
+
+  return { outline, parts, details: det, outside: out, folds };
 }
 
 // ─────────────────────────────────────────────────────────────────

@@ -216,5 +216,12 @@ export function hat(params, view) {
     }
   }
   if (p.meshBack === true && back && k === 'cap') { /* handled via mesh flag */ }
-  return { outline, parts, details: det, outside: out };
+  const ch = p.crownH || 110;
+  const folds = [
+    { d: M(P(cx - 80, by - ch * 0.5)) + Q(P(cx - 62, by - ch * 0.88), P(cx + 4, by - ch * 0.96)), k: 'light' },
+    { d: M(P(cx - 40, by - ch * 0.45)) + Q(P(cx - 30, by - ch * 0.7), P(cx + 10, by - ch * 0.75)), k: 'lightSoft' },
+    { d: M(P(cx - 120, by - 6)) + Q(P(cx, by + 6), P(cx + 120, by - 6)), k: 'shadowSoft' },
+  ];
+  if (k === 'beanie' || k === 'trapper') for (const x of [-60, -10, 45]) folds.push({ d: M(P(cx + x, by - ch * 0.75)) + Q(P(cx + x + 8, by - ch * 0.4), P(cx + x + 2, by - 10)), k: 'crease' });
+  return { outline, parts, details: det, outside: out, folds };
 }

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Garment look check (dev)</title>
+<style>body{margin:0;background:#eceae4;display:grid;grid-template-columns:repeat(4,1fr);gap:0}svg{width:100%;height:440px;display:block}</style></head>
+<body><script type="module">
+import { resolveSpec } from '../js/data/catalog.js';
+import { garmentSVG } from '../js/garments/render.js';
+const items = [
+  ['tops','tees','tshirt','classic','cottonJersey','#f4f4f2'], ['tops','sweaters','hoodie','dropShoulder','cottonFleece','#5b6b7c'],
+  ['tops','outerwear','denimJacket','classic','denim',null], ['tops','shirts','buttonUp','classic','oxfordCloth',null],
+  ['bottoms','denim','fivePocket','straight','midWash',null], ['bottoms','skirts','midi','pleated','satin','#7a2f2f'],
+  ['hats','caps','baseball','structured','cottonTwill','#1f2c45'], ['shoes','sneakers','lowTop','classic','leather','#f2f0eb'],
+];
+const v = new URLSearchParams(location.search).get('view') || 'front';
+document.body.innerHTML = items.map(([category, genre, type, cut, material, color]) => {
+  const s = resolveSpec({ category, genre, type, cut, material });
+  return garmentSVG({ tpl: s.tpl, params: s.params, view: v, materialId: material, color: color || s.material.color, accent: s.tpl === 'shoe' ? '#e9e6df' : '#c0392b' });
+}).join('');
+document.title = 'done';
+</script></body></html>
