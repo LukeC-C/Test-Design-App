@@ -12,7 +12,7 @@ export function hat(params, view) {
   const k = p.kind;
 
   if (k === 'cap' || k === 'military' || k === 'visor') {
-    const cw = p.crownW || 138, ch = k === 'military' ? 120 : (p.crownH || 118);
+    const cw = p.crownW || 128, ch = k === 'military' ? 120 : (p.crownH || 118);
     const st = p.structured !== false;
     let crown;
     if (k === 'military') {
@@ -20,19 +20,35 @@ export function hat(params, view) {
     } else if (k === 'visor') {
       crown = M(P(cx - cw, by - 4)) + Q(P(cx, by - 50), P(cx + cw, by - 4)) + L(P(cx + cw, by - 34)) + Q(P(cx, by - 80), P(cx - cw, by - 34)) + ' Z';
     } else {
-      const f = st ? 0.6 : 0.68;
-      crown = smooth([P(cx - cw, by), P(cx - cw * 0.97, by - ch * 0.5), P(cx - cw * f, by - ch * 0.93), P(cx, by - ch), P(cx + cw * f, by - ch * 0.93), P(cx + cw * 0.97, by - ch * 0.5), P(cx + cw, by)], false) + Q(P(cx, by + 8), P(cx - cw, by)) + ' Z';
+      // dome that is widest a little above the band, with a base that wraps around the head
+      const f = st ? 0.7 : 0.78, cb = cw * 0.95;
+      crown = smooth([P(cx - cb, by + 6), P(cx - cw * 1.01, by - ch * 0.4), P(cx - cw * f, by - ch * 0.88), P(cx, by - ch), P(cx + cw * f, by - ch * 0.88), P(cx + cw * 1.01, by - ch * 0.4), P(cx + cb, by + 6)], false) + Q(P(cx, by + 22), P(cx - cb, by + 6)) + ' Z';
     }
     outline = crown;
     if (!back) {
       const bd = p.brimD || (k === 'visor' ? 60 : 50);
       let brim;
       if (p.brim === 'flat' || k === 'military') {
-        brim = M(P(cx - cw - 14, by - 6)) + L(P(cx + cw + 14, by - 6)) + L(P(cx + cw + 18, by + bd * 0.36)) + Q(P(cx, by + bd * 0.5), P(cx - cw - 18, by + bd * 0.36)) + ' Z';
-        D(M(P(cx - cw - 10, by + bd * 0.18)) + Q(P(cx, by + bd * 0.28), P(cx + cw + 10, by + bd * 0.18)), 'stitch');
+        // flat bill seen from the front: a shallow trapezoid with a visible edge thickness
+        const bw = cw * 1.06, d0 = bd * 0.62;
+        brim = M(P(cx - bw, by + 4)) + Q(P(cx, by + 10), P(cx + bw, by + 4)) + L(P(cx + bw + 8, by + d0)) + Q(P(cx, by + d0 + 10), P(cx - bw - 8, by + d0)) + ' Z';
+        const edge = M(P(cx - bw - 8, by + d0)) + Q(P(cx, by + d0 + 10), P(cx + bw + 8, by + d0)) + L(P(cx + bw + 7, by + d0 + 7)) + Q(P(cx, by + d0 + 17), P(cx - bw - 7, by + d0 + 7)) + ' Z';
+        outline += ' ' + edge;
+        D(edge, 'band-dark');
+        for (const t of [0.45, 0.75]) D(M(P(cx - bw - 6 * t, by + 4 + (d0 - 4) * t)) + Q(P(cx, by + 10 + (d0 - 4) * t), P(cx + bw + 6 * t, by + 4 + (d0 - 4) * t)), 'stitch');
       } else {
-        brim = M(P(cx - cw - 8, by - 10)) + C(P(cx - cw * 0.6, by + bd * 1.2), P(cx + cw * 0.6, by + bd * 1.2), P(cx + cw + 8, by - 10)) + C(P(cx + cw * 0.5, by + 10), P(cx - cw * 0.5, by + 10), P(cx - cw - 8, by - 10)) + ' Z';
-        for (const t of [0.35, 0.65]) D(M(P(cx - cw - 4 + t * 6, by - 6 + t * 10)) + C(P(cx - cw * 0.6, by + bd * (0.3 + t * 0.7)), P(cx + cw * 0.6, by + bd * (0.3 + t * 0.7)), P(cx + cw + 4 - t * 6, by - 6 + t * 10)), 'stitch');
+        // pre-curved bill: its sides bend down around the face, so from the front it reads as an arch
+        const bw = cw * 1.04;
+        const outer = (t, dy = 0) => {
+          const y0 = by + 6 + dy;
+          return M(P(cx - bw * t, by + 2 + dy * 0.3))
+            + C(P(cx - bw * 1.06 * t, y0 + (bd * 0.55 - 6) * t), P(cx - bw * 0.6 * t, y0 + (bd * 1.02 - 6) * t), P(cx, y0 + (bd * 1.02 - 6) * t))
+            + C(P(cx + bw * 0.6 * t, y0 + (bd * 1.02 - 6) * t), P(cx + bw * 1.06 * t, y0 + (bd * 0.55 - 6) * t), P(cx + bw * t, by + 2 + dy * 0.3));
+        };
+        brim = M(P(cx + bw, by + 2)) + C(P(cx + bw * 0.55, by + 20), P(cx - bw * 0.55, by + 20), P(cx - bw, by + 2))
+          + outer(1).replace(/^M [^C]+/, '') + ' Z';
+        D(outer(1), 'rib-edge');
+        for (const t of [0.8, 0.9]) D(outer(t, 2), 'stitch');
       }
       outline += ' ' + brim;
       if (k === 'visor') {
