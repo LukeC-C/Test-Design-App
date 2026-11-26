@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M64 350 C50 316 50 294 68 254 C98 249 134 272 184 272 C216 272 232 248 254 224 C260 218 276 218 284 228 C332 260 344 276 404 290 C464 300 506 299 534 312 C550 322 550 332 542 340 C550 343 552 362.5 538 374.5 C512 379 474 380 430 380 L84 380 C68 380 59 375 59 365 C59 356 61 350 64 350 Z"/>
+  <g id="accent">
+    <path d="M542 340 C550 343 552 362.5 538 374.5 C512 379 474 380 430 380 L84 380 C68 380 59 375 59 365 C59 356 61 350 64 350 L396 350 C466 350 512 343 542 340 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M100 300 C200 292 320 296 440 310" stroke="#fff" stroke-width="18" stroke-opacity="0.22"/>
+    <path d="M84 342 C200 344 380 344 520 338" stroke="#000" stroke-width="12" stroke-opacity="0.16"/>
+    <path d="M60 330 C56 290 62 270 70 254" stroke="#000" stroke-width="12" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M285.8 253.1 A3.6 3.6 0 1 0 293 253.1 A3.6 3.6 0 1 0 285.8 253.1 Z"/><path d="M307.1 268.1 A3.6 3.6 0 1 0 314.3 268.1 A3.6 3.6 0 1 0 307.1 268.1 Z"/><path d="M325.9 280.6 A3.6 3.6 0 1 0 333.1 280.6 A3.6 3.6 0 1 0 325.9 280.6 Z"/><path d="M345.7 291 A3.6 3.6 0 1 0 352.9 291 A3.6 3.6 0 1 0 345.7 291 Z"/><path d="M369.8 300 A3.6 3.6 0 1 0 377 300 A3.6 3.6 0 1 0 369.8 300 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M272 258 C320 290 332 306 398 311 C412 305 414 296 410 291"/><path d="M80 300 C100 320 120 336 140 346"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M272 258 C320 290 332 306 398 311 C412 305 414 296 410 291"/><path d="M80 300 C100 320 120 336 140 346"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.05" stroke-opacity="0.32" stroke-width="1.6"><path d="M186 344 C200 310 230 286 266 270 L300 300 C270 314 250 330 244 344 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M76 268 C104 266 140 282 186 282"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M76 268 C104 266 140 282 186 282"/></g>
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M440 350 C446 330 462 312 490 306"/><path d="M70 368 L530 368"/></g>
+  </g>
+  <g id="outside">
+    <path d="M289.4 253.1 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M289.4 253.1 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M310.7 268.1 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M310.7 268.1 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M329.5 280.6 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M329.5 280.6 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M349.3 291 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M349.3 291 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M373.4 300 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M373.4 300 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M293.4 243.1 c-12.6 -14.4 -27 -7.2 -18 3.6 M293.4 243.1 c9 -16.2 25.2 -12.6 18 1.8 M293.4 243.1 c-3.6 12.6 -10.8 23.4 -16.2 30.6 M293.4 243.1 c3.6 12.6 3.6 23.4 9 32.4" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M293.4 243.1 c-12.6 -14.4 -27 -7.2 -18 3.6 M293.4 243.1 c9 -16.2 25.2 -12.6 18 1.8 M293.4 243.1 c-3.6 12.6 -10.8 23.4 -16.2 30.6 M293.4 243.1 c3.6 12.6 3.6 23.4 9 32.4" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+</svg>

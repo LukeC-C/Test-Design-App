@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M64 350 C50 316 50 302 68 262 C98 257 134 280 184 280 C216 280 238 260 260 236 C266 230 282 230 290 240 C338 272 344 280 404 294 C464 304 506 303 534 316 C550 326 550 332 542 340 C550 343 552 362.5 538 374.5 C512 379 474 380 430 380 L84 380 C68 380 59 375 59 365 C59 356 61 350 64 350 Z"/>
+  <g id="accent">
+    <path d="M542 340 C550 343 552 362.5 538 374.5 C512 379 474 380 430 380 L84 380 C68 380 59 375 59 365 C59 356 61 350 64 350 L396 350 C466 350 512 343 542 340 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M100 306 C200 302 320 306 440 320" stroke="#fff" stroke-width="18" stroke-opacity="0.22"/>
+    <path d="M84 342 C200 344 380 344 520 338" stroke="#000" stroke-width="12" stroke-opacity="0.14"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M291.6 264.9 A3.6 3.6 0 1 0 298.8 264.9 A3.6 3.6 0 1 0 291.6 264.9 Z"/><path d="M311.9 278.5 A3.6 3.6 0 1 0 319.1 278.5 A3.6 3.6 0 1 0 311.9 278.5 Z"/><path d="M329.1 288.8 A3.6 3.6 0 1 0 336.3 288.8 A3.6 3.6 0 1 0 329.1 288.8 Z"/><path d="M347.2 297 A3.6 3.6 0 1 0 354.4 297 A3.6 3.6 0 1 0 347.2 297 Z"/><path d="M370.1 304.4 A3.6 3.6 0 1 0 377.3 304.4 A3.6 3.6 0 1 0 370.1 304.4 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M280.4 264 C328.4 296 334.4 304 398 310.8 C412 306 414 300 410 295"/><path d="M136 350 C128 324 110 296 86 272"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M280.4 264 C328.4 296 334.4 304 398 310.8 C412 306 414 300 410 295"/><path d="M136 350 C128 324 110 296 86 272"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M74 276 C104 274 140 290 186 290 C208 290 222 280 232 268"/><path d="M70 342 L534 342"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M74 276 C104 274 140 290 186 290 C208 290 222 280 232 268"/><path d="M70 342 L534 342"/></g>
+    <g stroke="#000" stroke-opacity="0.45" stroke-width="2.4" stroke-dasharray=".1 5" stroke-linecap="round"><path d="M462 318 L500 318 M466 330 L506 330"/></g>
+  </g>
+  <g id="outside">
+    <path d="M295.2 264.9 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M295.2 264.9 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M315.5 278.5 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M315.5 278.5 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M332.7 288.8 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M332.7 288.8 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M350.8 297 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M350.8 297 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M373.7 304.4 l10 -12" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M373.7 304.4 l10 -12" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M299.2 254.9 c-12.6 -14.4 -27 -7.2 -18 3.6 M299.2 254.9 c9 -16.2 25.2 -12.6 18 1.8 M299.2 254.9 c-3.6 12.6 -10.8 23.4 -16.2 30.6 M299.2 254.9 c3.6 12.6 3.6 23.4 9 32.4" fill="none" stroke="#6f6b63" stroke-width="5.4" stroke-linecap="round"/>
+    <path d="M299.2 254.9 c-12.6 -14.4 -27 -7.2 -18 3.6 M299.2 254.9 c9 -16.2 25.2 -12.6 18 1.8 M299.2 254.9 c-3.6 12.6 -10.8 23.4 -16.2 30.6 M299.2 254.9 c3.6 12.6 3.6 23.4 9 32.4" fill="none" stroke="#f3f1ea" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+</svg>

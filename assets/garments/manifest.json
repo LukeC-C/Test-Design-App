@@ -1,4 +1,146 @@
 {
   "version": 1,
-  "garments": {}
+  "garments": {
+    "shoes/ankleBoot": {
+      "front": "shoes/ankleBoot-front.svg"
+    },
+    "shoes/balletFlat": {
+      "front": "shoes/balletFlat-front.svg"
+    },
+    "shoes/basketball": {
+      "front": "shoes/basketball-front.svg"
+    },
+    "shoes/blockHeel": {
+      "front": "shoes/blockHeel-front.svg"
+    },
+    "shoes/boat": {
+      "front": "shoes/boat-front.svg"
+    },
+    "shoes/brogue": {
+      "front": "shoes/brogue-front.svg"
+    },
+    "shoes/chelsea": {
+      "front": "shoes/chelsea-front.svg"
+    },
+    "shoes/chukka": {
+      "front": "shoes/chukka-front.svg"
+    },
+    "shoes/clog": {
+      "front": "shoes/clog-front.svg"
+    },
+    "shoes/combat": {
+      "front": "shoes/combat-front.svg"
+    },
+    "shoes/court": {
+      "front": "shoes/court-front.svg"
+    },
+    "shoes/cowboyBoot": {
+      "front": "shoes/cowboyBoot-front.svg"
+    },
+    "shoes/derby": {
+      "front": "shoes/derby-front.svg"
+    },
+    "shoes/desert": {
+      "front": "shoes/desert-front.svg"
+    },
+    "shoes/driver": {
+      "front": "shoes/driver-front.svg"
+    },
+    "shoes/espadrille": {
+      "front": "shoes/espadrille-front.svg"
+    },
+    "shoes/fisherman": {
+      "front": "shoes/fisherman-front.svg"
+    },
+    "shoes/flipFlop": {
+      "front": "shoes/flipFlop-front.svg"
+    },
+    "shoes/gladiator": {
+      "front": "shoes/gladiator-front.svg"
+    },
+    "shoes/heeledSandal": {
+      "front": "shoes/heeledSandal-front.svg"
+    },
+    "shoes/highTop": {
+      "front": "shoes/highTop-front.svg"
+    },
+    "shoes/hiking": {
+      "front": "shoes/hiking-front.svg"
+    },
+    "shoes/horsebit": {
+      "front": "shoes/horsebit-front.svg"
+    },
+    "shoes/kittenHeel": {
+      "front": "shoes/kittenHeel-front.svg"
+    },
+    "shoes/loafer": {
+      "front": "shoes/loafer-front.svg"
+    },
+    "shoes/loaferFlat": {
+      "front": "shoes/loaferFlat-front.svg"
+    },
+    "shoes/lowTop": {
+      "front": "shoes/lowTop-front.svg"
+    },
+    "shoes/maryJane": {
+      "front": "shoes/maryJane-front.svg"
+    },
+    "shoes/midTop": {
+      "front": "shoes/midTop-front.svg"
+    },
+    "shoes/monk": {
+      "front": "shoes/monk-front.svg"
+    },
+    "shoes/moto": {
+      "front": "shoes/moto-front.svg"
+    },
+    "shoes/mule": {
+      "front": "shoes/mule-front.svg"
+    },
+    "shoes/oxfordShoe": {
+      "front": "shoes/oxfordShoe-front.svg"
+    },
+    "shoes/pennyLoafer": {
+      "front": "shoes/pennyLoafer-front.svg"
+    },
+    "shoes/pump": {
+      "front": "shoes/pump-front.svg"
+    },
+    "shoes/rainBoot": {
+      "front": "shoes/rainBoot-front.svg"
+    },
+    "shoes/runner": {
+      "front": "shoes/runner-front.svg"
+    },
+    "shoes/skate": {
+      "front": "shoes/skate-front.svg"
+    },
+    "shoes/slide": {
+      "front": "shoes/slide-front.svg"
+    },
+    "shoes/slipOn": {
+      "front": "shoes/slipOn-front.svg"
+    },
+    "shoes/snowBoot": {
+      "front": "shoes/snowBoot-front.svg"
+    },
+    "shoes/sportSandal": {
+      "front": "shoes/sportSandal-front.svg"
+    },
+    "shoes/stiletto": {
+      "front": "shoes/stiletto-front.svg"
+    },
+    "shoes/trail": {
+      "front": "shoes/trail-front.svg"
+    },
+    "shoes/training": {
+      "front": "shoes/training-front.svg"
+    },
+    "shoes/wedgeHeel": {
+      "front": "shoes/wedgeHeel-front.svg"
+    },
+    "shoes/workBoot": {
+      "front": "shoes/workBoot-front.svg"
+    }
+  }
 }
