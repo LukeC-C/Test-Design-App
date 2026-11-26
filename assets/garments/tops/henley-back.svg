@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 82 C328.8 82 342 74 348 72 C368 78 396 88 426 96 C440 100 500.9 243 562.2 363.3 L517.6 386 C460.4 273.7 441.8 227.2 430 204 C430 310.4 430 390.2 430 470 L300 470 L170 470 C170 390.2 170 310.4 170 204 C158.2 227.2 139.6 273.7 82.4 386 L37.8 363.3 C99.1 243 160 100 174 96 C204 88 232 78 252 72 C258 74 271.2 82 300 82 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M227.2 154 C219.4 234 219.4 330 227.2 420" stroke="#fff" stroke-width="44" stroke-opacity="0.12"/>
+    <path d="M409.2 214 C417 284 417 350 411.8 450" stroke="#000" stroke-width="24" stroke-opacity="0.18"/>
+    <path d="M274 400 C293.5 410 313 396 339 406" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+    <path d="M414.7 142.1 L512.8 334.6" stroke="#000" stroke-width="22" stroke-opacity="0.12"/>
+    <path d="M171 134.9 L73 327.3" stroke="#fff" stroke-width="22" stroke-opacity="0.12"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M426 96 C420 136 422 164 430 204"/><path d="M174 96 C180 136 178 164 170 204"/><path d="M544 327.7 L499.5 350.4"/><path d="M56 327.7 L100.5 350.4"/><path d="M250 73 C271.2 92 328.8 92 350 73"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M426 96 C420 136 422 164 430 204"/><path d="M174 96 C180 136 178 164 170 204"/><path d="M544 327.7 L499.5 350.4"/><path d="M56 327.7 L100.5 350.4"/><path d="M250 73 C271.2 92 328.8 92 350 73"/></g>
+    <g stroke="#000" stroke-opacity="0.13" stroke-width="1.2"><path d="M539 333.6 L554.9 364.8"/><path d="M532.7 336.8 L548.6 368"/><path d="M526.3 340.1 L542.2 371.2"/><path d="M519.9 343.3 L535.8 374.5"/><path d="M513.6 346.5 L529.5 377.7"/><path d="M507.2 349.8 L523.1 381"/><path d="M61 333.6 L45.1 364.8"/><path d="M67.3 336.8 L51.4 368"/><path d="M73.7 340.1 L57.8 371.2"/><path d="M80.1 343.3 L64.2 374.5"/><path d="M86.4 346.5 L70.5 377.7"/><path d="M92.8 349.8 L76.9 381"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M171 456 L429 456"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M171 456 L429 456"/></g>
+  </g>
+</svg>

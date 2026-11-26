@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 50 L344 50 C348 50 350 54 350 60 L350 76 C360 80 403 90 433 96 C447 100 508.2 242.9 569.2 363.3 L521.1 387.8 C463.9 275.6 451.8 230.2 440 207 C440 306.6 440 381.3 440 456 C438 460 384 462 300 462 C216 462 162 460 160 456 C160 381.3 160 306.6 160 207 C148.2 230.2 136.1 275.6 78.9 387.8 L30.8 363.3 C91.8 242.9 153 100 167 96 C197 90 240 80 250 76 L250 60 C250 54 252 50 256 50 L300 50 Z"/>
+  <g id="accent">
+    <path d="M433 96 C447 100 508.2 242.9 569.2 363.3 L521.1 387.8 C463.9 275.6 451.8 230.2 440 207 C432 167 427 136 433 96 Z"/>
+    <path d="M167 96 C153 100 91.8 242.9 30.8 363.3 L78.9 387.8 C136.1 275.6 148.2 230.2 160 207 C168 167 173 136 167 96 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M221.6 157 C213.2 237 213.2 316 221.6 406" stroke="#fff" stroke-width="44" stroke-opacity="0.12"/>
+    <path d="M417.6 217 C426 287 426 336 420.4 436" stroke="#000" stroke-width="24" stroke-opacity="0.18"/>
+    <path d="M272 386 C293 396 314 382 342 392" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+    <path d="M419.5 143.3 L517.6 335.7" stroke="#000" stroke-width="22" stroke-opacity="0.12"/>
+    <path d="M165.1 135.4 L67 327.9" stroke="#fff" stroke-width="22" stroke-opacity="0.12"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M551 327.7 L502.9 352.2"/><path d="M49 327.7 L97.1 352.2"/><path d="M161 410 L439 410"/><path d="M250 78 C270 86 330 86 350 78"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M551 327.7 L502.9 352.2"/><path d="M49 327.7 L97.1 352.2"/><path d="M161 410 L439 410"/><path d="M250 78 C270 86 330 86 350 78"/></g>
+    <g stroke="#000" stroke-opacity="0.13" stroke-width="1.2"><path d="M545.5 333.8 L561.4 365"/><path d="M538.7 337.3 L554.5 368.5"/><path d="M531.8 340.8 L547.7 372"/><path d="M524.9 344.3 L540.8 375.5"/><path d="M518 347.8 L533.9 379"/><path d="M511.2 351.3 L527 382.5"/><path d="M54.5 333.8 L38.6 365"/><path d="M61.3 337.3 L45.5 368.5"/><path d="M68.2 340.8 L52.3 372"/><path d="M75.1 344.3 L59.2 375.5"/><path d="M82 347.8 L66.1 379"/><path d="M88.8 351.3 L73 382.5"/><path d="M172.2 413 L172.2 454"/><path d="M184.3 413 L184.3 454"/><path d="M196.5 413 L196.5 454"/><path d="M208.7 413 L208.7 454"/><path d="M220.9 413 L220.9 454"/><path d="M233 413 L233 454"/><path d="M245.2 413 L245.2 454"/><path d="M257.4 413 L257.4 454"/><path d="M269.6 413 L269.6 454"/><path d="M281.7 413 L281.7 454"/><path d="M293.9 413 L293.9 454"/><path d="M306.1 413 L306.1 454"/><path d="M318.3 413 L318.3 454"/><path d="M330.4 413 L330.4 454"/><path d="M342.6 413 L342.6 454"/><path d="M354.8 413 L354.8 454"/><path d="M367 413 L367 454"/><path d="M379.1 413 L379.1 454"/><path d="M391.3 413 L391.3 454"/><path d="M403.5 413 L403.5 454"/><path d="M415.7 413 L415.7 454"/><path d="M427.8 413 L427.8 454"/><path d="M256 50 L256 79.3536"/><path d="M264 50 L264 80.8896"/><path d="M272 50 L272 82.1184"/><path d="M280 50 L280 83.04"/><path d="M288 50 L288 83.6544"/><path d="M296 50 L296 83.9616"/><path d="M304 50 L304 83.9616"/><path d="M312 50 L312 83.6544"/><path d="M320 50 L320 83.04"/><path d="M328 50 L328 82.1184"/><path d="M336 50 L336 80.8896"/><path d="M344 50 L344 79.3536"/></g>
+    <g stroke="#000" stroke-opacity="0.48" stroke-width="2"><path d="M161 442 L439 442"/><path d="M562.8 350.8 L514.7 375.3"/><path d="M37.2 350.8 L85.3 375.3"/><path d="M161 432 L439 432"/><path d="M558.3 341.9 L510.2 366.4"/><path d="M41.7 341.9 L89.8 366.4"/><path d="M250 62 L350 62"/></g>
+    <g stroke="#fff" stroke-opacity="0.14" stroke-width="1.4" transform="translate(1 1.4)"><path d="M161 442 L439 442"/><path d="M562.8 350.8 L514.7 375.3"/><path d="M37.2 350.8 L85.3 375.3"/><path d="M161 432 L439 432"/><path d="M558.3 341.9 L510.2 366.4"/><path d="M41.7 341.9 L89.8 366.4"/><path d="M250 62 L350 62"/></g>
+  </g>
+</svg>

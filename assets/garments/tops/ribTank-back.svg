@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 110 C335 110 348 116 350 76 L380 80 C386 146 388 204 418 214 C418 254 410 270 410 320 C410 370 416 406 416 466 L300 466 L184 466 C184 406 190 370 190 320 C190 270 182 254 182 214 C212 204 214 146 220 80 L250 76 C252 116 265 110 300 110 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M241 224 C233.9 294 233.9 346 241 426" stroke="#fff" stroke-width="28" stroke-opacity="0.2"/>
+    <path d="M396.8 234 C403.8 294 402.1 346 397.4 446" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M354.8 80 C358 116 335 114 300 118"/><path d="M245.2 80 C242 116 265 114 300 118"/><path d="M375.2 82 C376.8 146 380 196 414 206"/><path d="M224.8 82 C223.2 146 220 196 186 206"/><path d="M185 456 L415 456"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M354.8 80 C358 116 335 114 300 118"/><path d="M245.2 80 C242 116 265 114 300 118"/><path d="M375.2 82 C376.8 146 380 196 414 206"/><path d="M224.8 82 C223.2 146 220 196 186 206"/><path d="M185 456 L415 456"/></g>
+    <g stroke="#000" stroke-opacity="0.13" stroke-width="1.2"><path d="M196 194.8 L196 462"/><path d="M208 192.4 L208 462"/><path d="M220 190.0 L220 462"/><path d="M232 187.6 L232 462"/><path d="M244 185.2 L244 462"/><path d="M256 182.8 L256 462"/><path d="M268 180.4 L268 462"/><path d="M280 178.0 L280 462"/><path d="M292 175.6 L292 462"/><path d="M316 177.2 L316 462"/><path d="M328 179.6 L328 462"/><path d="M340 182.0 L340 462"/><path d="M352 184.4 L352 462"/><path d="M364 186.8 L364 462"/><path d="M376 189.2 L376 462"/><path d="M388 191.6 L388 462"/><path d="M400 194.0 L400 462"/></g>
+  </g>
+</svg>

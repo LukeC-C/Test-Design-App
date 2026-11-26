@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 50 L344 50 C348 50 350 54 350 60 L350 76 C360 80 394.6 90 424.6 96 C438.6 100 499.2 243.2 560.8 363.3 L519.8 384.2 C462.6 271.9 439.8 226.6 428 203.4 C427.6 310 424 390 424 470 L300 470 L176 470 C176 390 172.4 310 172 203.4 C160.2 226.6 137.4 271.9 80.2 384.2 L39.2 363.3 C100.8 243.2 161.4 100 175.4 96 C205.4 90 240 80 250 76 L250 60 C250 54 252 50 256 50 L300 50 Z"/>
+  <g id="accent">
+    <path d="M437.4 134.4 L541.8 339.3 L539.2 340.7 L434.7 135.7 Z"/>
+    <path d="M162.6 134.4 L58.2 339.3 L60.8 340.7 L165.3 135.7 Z"/>
+    <path d="M230 300 L370 300 L370 306 L230 306 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M228.3 153.4 C220.6 233.4 220.6 330 228.3 420" stroke="#fff" stroke-width="44" stroke-opacity="0.12"/>
+    <path d="M407.5 213.4 C415.2 283.4 411.6 350 406.6 450" stroke="#000" stroke-width="24" stroke-opacity="0.18"/>
+    <path d="M274.4 400 C293.6 410 312.8 396 338.4 406" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+    <path d="M415.5 141 L513.6 333.5" stroke="#000" stroke-width="22" stroke-opacity="0.12"/>
+    <path d="M171.4 134.3 L73.3 326.8" stroke="#fff" stroke-width="22" stroke-opacity="0.12"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M424.6 96 C418.6 136 420 163.4 428 203.4"/><path d="M175.4 96 C181.4 136 180 163.4 172 203.4"/><path d="M554.4 350.8 L513.5 371.7"/><path d="M45.6 350.8 L86.5 371.7"/><path d="M177 456 L423 456"/><path d="M252 82 C270 86 330 86 348 82"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M424.6 96 C418.6 136 420 163.4 428 203.4"/><path d="M175.4 96 C181.4 136 180 163.4 172 203.4"/><path d="M554.4 350.8 L513.5 371.7"/><path d="M45.6 350.8 L86.5 371.7"/><path d="M177 456 L423 456"/><path d="M252 82 C270 86 330 86 348 82"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.05" stroke-opacity="0.32" stroke-width="1.6"><path d="M175.4 140 C240 156 360 156 424.6 140 L418.6 168 C360 184 240 184 181.4 168 Z"/></g>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 192 C360 192 422 186 424 190 C428 260 426 330 424 386 L300 386 L176 386 C174 330 172 260 176 190 C178 186 240 192 300 192 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M220 260 C260 266 340 266 380 260" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+    <path d="M220 216 C216 260 216 320 220 356" stroke="#fff" stroke-width="26" stroke-opacity="0.2"/>
+    <path d="M400 216 C406 260 406 320 404 366" stroke="#000" stroke-width="20" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M178 202 C240 206 360 206 422 202"/><path d="M178 370 C240 374 360 374 422 370"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M178 202 C240 206 360 206 422 202"/><path d="M178 370 C240 374 360 374 422 370"/></g>
+    <g stroke="#000" stroke-opacity="0.13" stroke-width="1.2"><path d="M188 194 L188 204"/><path d="M198 194 L198 204"/><path d="M208 194 L208 204"/><path d="M218 194 L218 204"/><path d="M228 194 L228 204"/><path d="M238 194 L238 204"/><path d="M248 194 L248 204"/><path d="M258 194 L258 204"/><path d="M268 194 L268 204"/><path d="M278 194 L278 204"/><path d="M288 194 L288 204"/><path d="M298 194 L298 204"/><path d="M308 194 L308 204"/><path d="M318 194 L318 204"/><path d="M328 194 L328 204"/><path d="M338 194 L338 204"/><path d="M348 194 L348 204"/><path d="M358 194 L358 204"/><path d="M368 194 L368 204"/><path d="M378 194 L378 204"/><path d="M388 194 L388 204"/><path d="M398 194 L398 204"/><path d="M408 194 L408 204"/></g>
+  </g>
+</svg>
