@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 82 C326.4 82 338 74 344 72 C364 78 387.6 88 417.6 96 C431.6 100 491.9 243.3 553.8 363.3 L516.4 382.4 C459.2 270.1 429.8 223.6 418 200.4 C418 240.4 406 270 406 320 C406 370 412 410 412 470 L300 470 L188 470 C188 410 194 370 194 320 C194 270 182 240.4 182 200.4 C170.2 223.6 140.8 270.1 83.6 382.4 L46.2 363.3 C108.1 243.3 168.4 100 182.4 96 C212.4 88 236 78 256 72 C262 74 273.6 82 300 82 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M233.9 150.4 C226.8 230.4 226.8 330 233.9 420" stroke="#fff" stroke-width="44" stroke-opacity="0.12"/>
+    <path d="M399.1 210.4 C406.2 280.4 400.8 350 396.3 450" stroke="#000" stroke-width="24" stroke-opacity="0.18"/>
+    <path d="M276.4 400 C294.1 410 311.8 396 335.4 406" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+    <path d="M410.7 139.9 L508.8 332.4" stroke="#000" stroke-width="22" stroke-opacity="0.12"/>
+    <path d="M177.3 133.8 L79.2 326.3" stroke="#fff" stroke-width="22" stroke-opacity="0.12"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M254 73 C273.6 92 326.4 92 346 73"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M254 73 C273.6 92 326.4 92 346 73"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M344 74 C370 80 400 120 418 200.4"/><path d="M256 74 C230 80 200 120 182 200.4"/><path d="M414 220.4 C390 280 380 360 376 470"/><path d="M186 220.4 C210 280 220 360 224 470"/><path d="M548.3 352.6 L510.9 371.7"/><path d="M51.7 352.6 L89.1 371.7"/><path d="M189 456 L411 456"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M344 74 C370 80 400 120 418 200.4"/><path d="M256 74 C230 80 200 120 182 200.4"/><path d="M414 220.4 C390 280 380 360 376 470"/><path d="M186 220.4 C210 280 220 360 224 470"/><path d="M548.3 352.6 L510.9 371.7"/><path d="M51.7 352.6 L89.1 371.7"/><path d="M189 456 L411 456"/></g>
+  </g>
+</svg>

@@ -12,6 +12,8 @@
 import { CATALOG, CUT_SETS, resolveSpec } from '../js/data/catalog.js';
 import { MATERIAL_SETS } from '../js/data/materials.js';
 import { garmentSVG } from '../js/garments/render.js';
+import { loadGarmentArt } from '../js/garments/custom.js';
+await loadGarmentArt(new URLSearchParams(location.search).get('art') || '../assets/garments/manifest.json');
 const q = new URLSearchParams(location.search);
 const cat = q.get('cat'), mode = q.get('mode') || 'types', view = q.get('view') || 'front';
 const out = document.getElementById('out');

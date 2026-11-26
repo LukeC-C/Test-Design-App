@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <g id="outline">
+    <path d="M300 362 C417.6 362 496 383 496 400 C496 414.6 417.6 456 300 456 C182.4 456 104 414.6 104 400 C104 383 182.4 362 300 362 Z"/>
+    <path d="M300 162 C333.6 144 378.4 134 412 148 C426 160 448 280 448 400 C448 410 381.4 416 300 416 C218.6 416 152 410 152 400 C152 280 174 160 188 148 C221.6 134 266.4 144 300 162 Z"/>
+  </g>
+  <g id="accent">
+    <path d="M151 376 C218.6 392 381.4 392 449 376 L449 400 C448 410 381.4 416 300 416 C218.6 416 152 410 151 400 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M277.6 170 C266.4 210 259.68 240 252.96 270" stroke="#000" stroke-width="14" stroke-opacity="0.18"/>
+    <path d="M196.4 190 C190.48000000000002 230 187.51999999999998 340 190.48000000000002 370" stroke="#fff" stroke-width="26" stroke-opacity="0.22"/>
+    <path d="M406.56 180 C424.32 230 430.24 340 427.28 380" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+    <path d="M152 418 C226.0 436 374.0 436 448 418" stroke="#000" stroke-width="16" stroke-opacity="0.22"/>
+    <path d="M131.44 400 C162.8 436.2 241.2 450.8 300 452" stroke="#fff" stroke-width="12" stroke-opacity="0.2"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M152 376 C218.6 392 381.4 392 448 376"/><path d="M152 400 C152 410 218.6 416 300 416 C381.4 416 448 410 448 400"/></g>
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M329.1 150 C335.8 190 344.8 230 356 270"/><path d="M270.9 150 C264.2 190 255.2 230 244 270"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M329.1 150 C335.8 190 344.8 230 356 270"/><path d="M270.9 150 C264.2 190 255.2 230 244 270"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M112 400 C112 412.20000000000005 187.2 448 300 448 C412.8 448 488 412.20000000000005 488 400"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M112 400 C112 412.20000000000005 187.2 448 300 448 C412.8 448 488 412.20000000000005 488 400"/></g>
+  </g>
+</svg>

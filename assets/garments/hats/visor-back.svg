@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 332 C402.5 332 505 318 519 312 C531 324 531 372 523 378 C412.8 390 300 390 300 390 C300 390 187.2 390 77 378 C69 372 69 324 81 312 C95 318 197.5 332 300 332 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M95 362 C197.5 378 402.5 378 505 362" stroke="#000" stroke-width="14" stroke-opacity="0.16"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M85 324 C192.5 338 407.5 338 515 324"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M85 324 C192.5 338 407.5 338 515 324"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.05" stroke-opacity="0.32" stroke-width="1.6"><path d="M236 336 H364 Q370 336 370 342 V362 Q370 368 364 368 H236 Q230 368 230 362 V342 Q230 336 236 336 Z"/></g>
+    <g fill="#c9c9c6" stroke="#6f6f6c" stroke-width="1.1"><path d="M291 334 H311 Q314 334 314 337 V367 Q314 370 311 370 H291 Q288 370 288 367 V337 Q288 334 291 334 Z"/></g>
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M296 340 H306 Q308 340 308 342 V362 Q308 364 306 364 H296 Q294 364 294 362 V342 Q294 340 296 340 Z"/></g>
+  </g>
+</svg>

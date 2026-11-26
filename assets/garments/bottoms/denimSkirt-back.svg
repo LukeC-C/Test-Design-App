@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 39.3 L422.7 39.3 C436.9 103 472.3 173.8 469.9 244.6 C467.6 298.9 458.1 393.3 455.8 440.5 L300 440.5 L144.2 440.5 C141.9 393.3 132.4 298.9 130.1 244.6 C127.7 173.8 163.1 103 177.3 39.3 L300 39.3 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M238.6 114.8 C231.3 221 209.1 322.5 209.1 416.9" stroke="#fff" stroke-width="42.5" stroke-opacity="0.13"/>
+    <path d="M398.2 114.8 C410.4 221 442.1 322.5 438.8 428.7" stroke="#000" stroke-width="28.3" stroke-opacity="0.16"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M174.9 84.1 L425.1 84.1"/><path d="M172.6 131.3 L300 157.3 L427.4 131.3"/><path d="M300 84.1 L300 287.1"/><path d="M333 171.4 L420.4 164.4 L422.7 261.1 L380.2 282.4 L340.1 265.8 Z"/><path d="M267 171.4 L179.6 164.4 L177.3 261.1 L219.8 282.4 L259.9 265.8 Z"/><path d="M300 287.1 L300 440.5"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M174.9 84.1 L425.1 84.1"/><path d="M172.6 131.3 L300 157.3 L427.4 131.3"/><path d="M300 84.1 L300 287.1"/><path d="M333 171.4 L420.4 164.4 L422.7 261.1 L380.2 282.4 L340.1 265.8 Z"/><path d="M267 171.4 L179.6 164.4 L177.3 261.1 L219.8 282.4 L259.9 265.8 Z"/><path d="M300 287.1 L300 440.5"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M177.3 78.2 L422.7 78.2"/><path d="M177.3 49.9 L422.7 49.9"/><path d="M172.6 140.8 L300 166.7 L427.4 140.8"/><path d="M338.9 178.5 L414.5 171.4 L416.8 256.4 L380.2 274.1 L346 259.9 L338.9 178.5"/><path d="M261.1 178.5 L185.5 171.4 L183.2 256.4 L219.8 274.1 L254 259.9 L261.1 178.5"/><path d="M146.6 426.3 L453.4 426.3"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M177.3 78.2 L422.7 78.2"/><path d="M177.3 49.9 L422.7 49.9"/><path d="M172.6 140.8 L300 166.7 L427.4 140.8"/><path d="M338.9 178.5 L414.5 171.4 L416.8 256.4 L380.2 274.1 L346 259.9 L338.9 178.5"/><path d="M261.1 178.5 L185.5 171.4 L183.2 256.4 L219.8 274.1 L254 259.9 L261.1 178.5"/><path d="M146.6 426.3 L453.4 426.3"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.05" stroke-opacity="0.32" stroke-width="1.6"><path d="M213.9 41.6 H220.9 Q223.3 41.6 223.3 44 V88.8 Q223.3 91.2 220.9 91.2 H213.9 Q211.5 91.2 211.5 88.8 V44 Q211.5 41.6 213.9 41.6 Z"/><path d="M296.5 41.6 H303.5 Q305.9 41.6 305.9 44 V88.8 Q305.9 91.2 303.5 91.2 H296.5 Q294.1 91.2 294.1 88.8 V44 Q294.1 41.6 296.5 41.6 Z"/><path d="M379.1 41.6 H386.1 Q388.5 41.6 388.5 44 V88.8 Q388.5 91.2 386.1 91.2 H379.1 Q376.7 91.2 376.7 88.8 V44 Q376.7 41.6 379.1 41.6 Z"/></g>
+  </g>
+</svg>

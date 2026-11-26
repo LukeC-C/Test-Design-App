@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <g id="outline">
+    <path d="M300 110 C457.7 110 505 188.6 505 372 C505 384 412.8 402 300 402 C187.2 402 95 384 95 372 C95 188.6 142.3 110 300 110 Z"/>
+    <path d="M300 394 C412.8 394 511 378 523 376 C529 386 427.1 430 300 430 C172.9 430 71 386 77 376 C89 378 187.2 394 300 394 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M172.9 180 C197.5 150 238.5 136 279.5 132" stroke="#fff" stroke-width="26" stroke-opacity="0.22"/>
+    <path d="M443.5 190 C484.5 250 488.6 332 484.5 372" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+    <path d="M115.5 412 C218.0 442 382.0 442 484.5 412" stroke="#000" stroke-width="16" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M300 114 L300 402"/><path d="M300 112 C393.8 116 451.7 200 464 390"/><path d="M300 112 C206.2 116 148.3 200 136 390"/><path d="M95 376 C197.5 406 402.5 406 505 376"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M300 114 L300 402"/><path d="M300 112 C393.8 116 451.7 200 464 390"/><path d="M300 112 C206.2 116 148.3 200 136 390"/><path d="M95 376 C197.5 406 402.5 406 505 376"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.14" stroke-opacity="0.5" stroke-width="1.2"><path d="M289 114 C289 102 311 102 311 114 Z"/></g>
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M190 174 A3.4 3.4 0 1 0 196.8 174 A3.4 3.4 0 1 0 190 174 Z"/><path d="M403.2 174 A3.4 3.4 0 1 0 410 174 A3.4 3.4 0 1 0 403.2 174 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M95 386 C177.0 418 423.0 418 505 386"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M95 386 C177.0 418 423.0 418 505 386"/></g>
+  </g>
+</svg>

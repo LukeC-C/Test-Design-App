@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 82 C328.8 82 342 74 348 72 C368 78 413.2 97 443.2 105 C457.2 109 485.9 152.4 520.8 191.2 L452.4 252.8 C419.8 216.6 453.4 238.1 436 218.8 C436 320.9 436 397.4 436 474 L300 474 L164 474 C164 397.4 164 320.9 164 218.8 C146.6 238.1 180.2 216.6 147.6 252.8 L79.2 191.2 C114.1 152.4 142.8 109 156.8 105 C186.8 97 232 78 252 72 C258 74 271.2 82 300 82 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M223.8 168.8 C215.7 248.8 215.7 334 223.8 424" stroke="#fff" stroke-width="44" stroke-opacity="0.096"/>
+    <path d="M414.2 228.8 C422.4 298.8 422.4 354 417 454" stroke="#000" stroke-width="24" stroke-opacity="0.144"/>
+    <path d="M272.8 404 C293.2 414 313.6 400 340.8 410" stroke="#000" stroke-width="10" stroke-opacity="0.08000000000000002"/>
+    <path d="M410.1 153.5 L466 215.6" stroke="#000" stroke-width="16" stroke-opacity="0.096"/>
+    <path d="M168 133.8 L112.1 195.9" stroke="#fff" stroke-width="16" stroke-opacity="0.096"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M443.2 105 C437.2 145 428 178.8 436 218.8"/><path d="M156.8 105 C162.8 145 172 178.8 164 218.8"/><path d="M250 73 C271.2 94 328.8 94 350 73"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M443.2 105 C437.2 145 428 178.8 436 218.8"/><path d="M156.8 105 C162.8 145 172 178.8 164 218.8"/><path d="M250 73 C271.2 94 328.8 94 350 73"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M511.5 180.8 L443.1 242.4"/><path d="M88.5 180.8 L156.9 242.4"/><path d="M165 460 L435 460"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M511.5 180.8 L443.1 242.4"/><path d="M88.5 180.8 L156.9 242.4"/><path d="M165 460 L435 460"/></g>
+  </g>
+</svg>

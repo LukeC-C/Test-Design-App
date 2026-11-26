@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 44 L344 44 C348 44 350 48 350 54 L350 76 C360 80 386.2 90 416.2 96 C430.2 100 490.5 243.3 552.4 363.3 L515.9 381.9 C458.7 269.6 427.8 223 416 199.8 C416 239.8 404 270 404 320 C404 370 410 410 410 470 L300 470 L190 470 C190 410 196 370 196 320 C196 270 184 239.8 184 199.8 C172.2 223 141.3 269.6 84.1 381.9 L47.6 363.3 C109.5 243.3 169.8 100 183.8 96 C213.8 90 240 80 250 76 L250 54 C250 48 252 44 256 44 L300 44 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M235 149.8 C228.1 229.8 228.1 330 235 420" stroke="#fff" stroke-width="44" stroke-opacity="0.12"/>
+    <path d="M397.4 209.8 C404.4 279.8 399 350 394.6 450" stroke="#000" stroke-width="24" stroke-opacity="0.18"/>
+    <path d="M276.8 400 C294.2 410 311.6 396 334.8 406" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+    <path d="M409.9 139.6 L508 332.1" stroke="#000" stroke-width="22" stroke-opacity="0.12"/>
+    <path d="M178.4 133.7 L80.4 326.1" stroke="#fff" stroke-width="22" stroke-opacity="0.12"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M340 52 C370 70 400 120 416 199.8"/><path d="M260 52 C230 70 200 120 184 199.8"/><path d="M412 219.8 C380 260 360 330 350 470"/><path d="M188 219.8 C220 260 240 330 250 470"/><path d="M546.9 352.6 L510.4 371.2"/><path d="M53.1 352.6 L89.6 371.2"/><path d="M191 458 L409 458"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M340 52 C370 70 400 120 416 199.8"/><path d="M260 52 C230 70 200 120 184 199.8"/><path d="M412 219.8 C380 260 360 330 350 470"/><path d="M188 219.8 C220 260 240 330 250 470"/><path d="M546.9 352.6 L510.4 371.2"/><path d="M53.1 352.6 L89.6 371.2"/><path d="M191 458 L409 458"/></g>
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M256 76 C270 82 330 82 344 76"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M256 76 C270 82 330 82 344 76"/></g>
+  </g>
+</svg>

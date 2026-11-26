@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 44 L396 44 C404 84 418 100 418 150 C418 220 406 294 406 384 C406 454 400 482 400 552 L320 552 C320 482 316 454 316 384 C316 294 312 240 300 200 C288 240 284 294 284 384 C284 454 280 482 280 552 L200 552 C200 482 194 454 194 384 C194 294 182 220 182 150 C182 100 196 84 204 44 L300 44 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M227 110 C228.3 260 229 384 230 522" stroke="#fff" stroke-width="34" stroke-opacity="0.13"/>
+    <path d="M404 150 C408 280 394 384 388 532" stroke="#000" stroke-width="22" stroke-opacity="0.16"/>
+    <path d="M300 190 C316 240 322 344 328 522" stroke="#000" stroke-width="18" stroke-opacity="0.14"/>
+    <path d="M300 190 C284 240 278 344 272 522" stroke="#000" stroke-width="14" stroke-opacity="0.1"/>
+    <path d="M260 170 C280 186 292 190 300 194" stroke="#000" stroke-width="10" stroke-opacity="0.12"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M202 82 L398 82"/><path d="M300 84 L300 194"/><path d="M204 78 L204 108 L230 110 L230 78"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M202 82 L398 82"/><path d="M300 84 L300 194"/><path d="M204 78 L204 108 L230 110 L230 78"/></g>
+    <g stroke="#000" stroke-opacity="0.13" stroke-width="1.2"><path d="M212 48 L210.24 79"/><path d="M222 48 L220.44 79"/><path d="M232 48 L230.64 79"/><path d="M242 48 L240.84 79"/><path d="M252 48 L251.04 79"/><path d="M262 48 L261.24 79"/><path d="M272 48 L271.44 79"/><path d="M282 48 L281.64 79"/><path d="M292 48 L291.84 79"/><path d="M302 48 L302.04 79"/><path d="M312 48 L312.24 79"/><path d="M322 48 L322.44 79"/><path d="M332 48 L332.64 79"/><path d="M342 48 L342.84000000000003 79"/><path d="M352 48 L353.04 79"/><path d="M362 48 L363.24 79"/><path d="M372 48 L373.44 79"/><path d="M382 48 L383.64 79"/></g>
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M287 64.9 A3 3 0 1 0 293 64.9 A3 3 0 1 0 287 64.9 Z"/><path d="M307 64.9 A3 3 0 1 0 313 64.9 A3 3 0 1 0 307 64.9 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M324 84 L324 160 C324 182 314 190 302 190"/><path d="M360 78 C366 116 388 132 416 134"/><path d="M240 78 C234 116 212 132 184 134"/><path d="M399 540 L321 540"/><path d="M201 540 L279 540"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M324 84 L324 160 C324 182 314 190 302 190"/><path d="M360 78 C366 116 388 132 416 134"/><path d="M240 78 C234 116 212 132 184 134"/><path d="M399 540 L321 540"/><path d="M201 540 L279 540"/></g>
+    <g stroke="#000" stroke-opacity="0.48" stroke-width="2"><path d="M352 78 C358 122 384 140 416 142"/><path d="M248 78 C242 122 216 140 184 142"/></g>
+    <g stroke="#fff" stroke-opacity="0.14" stroke-width="1.4" transform="translate(1 1.4)"><path d="M352 78 C358 122 384 140 416 142"/><path d="M248 78 C242 122 216 140 184 142"/></g>
+    <g fill="#c9c9c6" stroke="#6f6f6c" stroke-width="1.1"><path d="M407 140 A3 3 0 1 0 413 140 A3 3 0 1 0 407 140 Z"/><path d="M351 84 A3 3 0 1 0 357 84 A3 3 0 1 0 351 84 Z"/><path d="M187 140 A3 3 0 1 0 193 140 A3 3 0 1 0 187 140 Z"/><path d="M243 84 A3 3 0 1 0 249 84 A3 3 0 1 0 243 84 Z"/></g>
+  </g>
+  <g id="outside">
+    <path d="M310 64.9 C316 102 308 132 316 162" fill="none" stroke="#6f6b63" stroke-width="5" stroke-linecap="round"/>
+    <path d="M310 64.9 C316 102 308 132 316 162" fill="none" stroke="#eeebe4" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M290 64.9 C284 102 292 132 284 162" fill="none" stroke="#6f6b63" stroke-width="5" stroke-linecap="round"/>
+    <path d="M290 64.9 C284 102 292 132 284 162" fill="none" stroke="#eeebe4" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -673,7 +673,9 @@ class Designer {
     const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
     const box = this.L.box;
     const s = this.spec;
-    const pl = placementFor(s, box);
+    const pl = this.L.custom
+      ? { x: box.x + box.w / 2, y: box.y + box.h * (s.tpl === 'shoe' ? 0.55 : 0.38), w: box.w * (s.tpl === 'shoe' ? 0.22 : 0.26), maxH: box.h * 0.3 }
+      : placementFor(s, box);
     let w = pl.w, hgt = pl.w * (ih / iw);
     if (hgt > pl.maxH) { hgt = pl.maxH; w = hgt * (iw / ih); }
     const m = methodById(res.method);

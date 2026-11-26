@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flats preview</title>
+<style>body{margin:0;background:#eceae4;display:grid;grid-template-columns:repeat(4,1fr);font:12px system-ui}figure{margin:6px;background:#fff}img{width:100%;display:block}figcaption{text-align:center;padding:4px}</style></head>
+<body><script>
+// Raw flats (outline filled grey) — ?set=shoes&view=front
+const q=new URLSearchParams(location.search),set=q.get('set')||'shoes',v=q.get('view')||'front';
+fetch('../../assets/garments/manifest.json').then(r=>r.json()).then(async m=>{
+ const keys=Object.keys(m.garments).filter(k=>k.startsWith(set+'/'));
+ for(const k of keys){const file=m.garments[k][v];if(!file)continue;let t=await (await fetch('../../assets/garments/'+file)).text();
+  t=t.replace('id="outline"','id="outline" fill="#9aa7b4"').replace('<g id="accent">','<g id="accent" fill="#e8e4da">');
+  const fig=document.createElement('figure');fig.innerHTML=t.replace('<svg ','<svg width="100%" ')+'<figcaption>'+k+'</figcaption>';document.body.append(fig);}
+ document.title='done';});
+</script></body></html>

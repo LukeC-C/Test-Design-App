@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 120 C340.6 120 356 116 358 76 L398 80 C404 146 394 210 424 220 C424 300 426 380 426 470 L300 470 L174 470 C174 380 176 300 176 220 C206 210 196 146 202 80 L242 76 C244 116 259.4 120 300 120 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M238 230 C230.6 300 230.6 350 238 430" stroke="#fff" stroke-width="28" stroke-opacity="0.2"/>
+    <path d="M401.7 240 C409.1 300 410.9 350 405.8 450" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M363.4 80 C367 116 340.6 125 300 129"/><path d="M236.6 80 C233 116 259.4 125 300 129"/><path d="M392.6 82 C394.4 146 385 201 420 211"/><path d="M207.4 82 C205.6 146 215 201 180 211"/><path d="M175 458 L425 458"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M363.4 80 C367 116 340.6 125 300 129"/><path d="M236.6 80 C233 116 259.4 125 300 129"/><path d="M392.6 82 C394.4 146 385 201 420 211"/><path d="M207.4 82 C205.6 146 215 201 180 211"/><path d="M175 458 L425 458"/></g>
+  </g>
+</svg>

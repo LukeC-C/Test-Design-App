@@ -5,6 +5,8 @@
 // Dev page: large renders for visual checks. ?set=mix|hats|shoes  &view=front|back
 import { CATALOG, resolveSpec, getCuts } from '../js/data/catalog.js';
 import { garmentSVG } from '../js/garments/render.js';
+import { loadGarmentArt } from '../js/garments/custom.js';
+await loadGarmentArt(new URLSearchParams(location.search).get('art') || '../assets/garments/manifest.json');
 const q = new URLSearchParams(location.search);
 const set = q.get('set') || 'mix', v = q.get('view') || 'front';
 let items;

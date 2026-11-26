@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 82 C332.4 82 348 74 354 72 C374 78 394.6 88 404.6 98 C396.6 138 402 193.4 426 215.4 C426.2 312.4 428 385.2 428 458 L300 458 L172 458 C172 385.2 173.8 312.4 174 215.4 C198 193.4 203.4 138 195.4 98 C205.4 88 226 78 246 72 C252 74 267.6 82 300 82 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M228.3 165.4 C220.6 245.4 220.6 318 228.3 408" stroke="#fff" stroke-width="44" stroke-opacity="0.12"/>
+    <path d="M407.5 225.4 C415.2 295.4 415.2 338 410.1 438" stroke="#000" stroke-width="24" stroke-opacity="0.18"/>
+    <path d="M274.4 388 C293.6 398 312.8 384 338.4 394" stroke="#000" stroke-width="10" stroke-opacity="0.1"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M173 418 L427 418"/><path d="M244 73 C267.6 96 332.4 96 356 73"/><path d="M392.6 100 C384.6 138 386 195.4 416 219.4"/><path d="M207.4 100 C215.4 138 214 195.4 184 219.4"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M173 418 L427 418"/><path d="M244 73 C267.6 96 332.4 96 356 73"/><path d="M392.6 100 C384.6 138 386 195.4 416 219.4"/><path d="M207.4 100 C215.4 138 214 195.4 184 219.4"/></g>
+    <g stroke="#000" stroke-opacity="0.13" stroke-width="1.2"><path d="M184.2 421 L184.2 456"/><path d="M196.4 421 L196.4 456"/><path d="M208.6 421 L208.6 456"/><path d="M220.8 421 L220.8 456"/><path d="M233 421 L233 456"/><path d="M245.1 421 L245.1 456"/><path d="M257.3 421 L257.3 456"/><path d="M269.5 421 L269.5 456"/><path d="M281.7 421 L281.7 456"/><path d="M293.9 421 L293.9 456"/><path d="M306.1 421 L306.1 456"/><path d="M318.3 421 L318.3 456"/><path d="M330.5 421 L330.5 456"/><path d="M342.7 421 L342.7 456"/><path d="M354.9 421 L354.9 456"/><path d="M367 421 L367 456"/><path d="M379.2 421 L379.2 456"/><path d="M391.4 421 L391.4 456"/><path d="M403.6 421 L403.6 456"/><path d="M415.8 421 L415.8 456"/></g>
+  </g>
+</svg>

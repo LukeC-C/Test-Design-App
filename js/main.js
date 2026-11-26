@@ -1,5 +1,8 @@
 import { $ } from './lib/dom.js';
 import { prefs } from './lib/store.js';
+import { loadGarmentArt } from './garments/custom.js';
+
+const artReady = loadGarmentArt();
 
 const routes = [
   { re: /^#?\/?$/, load: () => import('./views/home.js') },
@@ -15,7 +18,7 @@ async function route() {
   const token = ++navToken;
   const r = routes.find((x) => x.re.test(hash)) || routes[0];
   const m = hash.match(r.re) || [];
-  const mod = await r.load();
+  const [mod] = await Promise.all([r.load(), artReady]);
   if (token !== navToken) return;
   if (cleanup) { try { cleanup(); } catch (e) { console.error(e); } cleanup = null; }
   const app = $('#app');

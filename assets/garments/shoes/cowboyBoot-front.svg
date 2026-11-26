@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M70 322 C60 292 70 242 82 250 C94 210 76 120 78 30 C110 34 150 62 182 64 C214 62 254 34 290 26 C292 110 282 200 306 246 C330 284 390 296 450 310 C500 320 540 332 556 350 C560 354 556 362 548 360 C552 364 540 372 520 374 L400 380 C340 378 250 332 176 328 C160 328 156 342 150 350 L146 380 L86 380 C80 360 72 332 70 322 Z"/>
+  <g id="accent">
+    <path d="M70 322 L176 318 C250 320 330 368 400 370 L520 368 C540 368 552 364 548 360 C552 364 540 372 520 374 L400 380 C340 378 250 332 176 328 C160 328 156 342 150 350 L146 380 L86 380 C80 360 72 332 70 322 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M120 50 C110 150 120 220 140 270" stroke="#fff" stroke-width="22" stroke-opacity="0.2"/>
+    <path d="M270 50 C270 120 268 190 286 240" stroke="#000" stroke-width="14" stroke-opacity="0.16"/>
+    <path d="M110 330 C200 340 380 352 520 360" stroke="#000" stroke-width="10" stroke-opacity="0.16"/>
+    <path d="M330 296 C400 304 460 316 520 334" stroke="#fff" stroke-width="12" stroke-opacity="0.2"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M290 40 C286 120 282 200 300 244"/><path d="M300 250 C320 270 312 300 280 320 C250 340 220 350 180 352"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M290 40 C286 120 282 200 300 244"/><path d="M300 250 C320 270 312 300 280 320 C250 340 220 350 180 352"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M120 90 C150 130 200 130 240 100 M126 130 C160 170 210 168 244 136 M134 170 C170 206 214 202 246 176"/><path d="M420 312 C450 300 490 310 520 330"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M120 90 C150 130 200 130 240 100 M126 130 C160 170 210 168 244 136 M134 170 C170 206 214 202 246 176"/><path d="M420 312 C450 300 490 310 520 330"/></g>
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M86 350 L148 350 M86 362 L147 362"/></g>
+  </g>
+  <g id="outside">
+    <path d="M206 66 C200 40 226 34 232 58" fill="none" stroke="#5b564e" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
