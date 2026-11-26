@@ -28,7 +28,7 @@ A clothing design prototyping app that you can install. It works the same on des
 
 ## Custom garment drawings
 
-Any garment's generated drawing can be replaced with a hand-made SVG, without code changes: add the file under `assets/garments/` and list it in `assets/garments/manifest.json`. The format, a ready-to-paste ChatGPT prompt and every garment key are in [`docs/garment-art-brief.md`](docs/garment-art-brief.md).
+Any garment's generated drawing can be replaced with a hand-made SVG, without code changes: add the file under `assets/garments/` and list it in `assets/garments/manifest.json`. The format, a ready-to-use drawing-agent prompt and every garment key are in [`docs/garment-art-brief.md`](docs/garment-art-brief.md).
 
 ## Run it
 

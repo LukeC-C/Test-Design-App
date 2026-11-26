@@ -1,46 +1,78 @@
-# Garment art brief (for ChatGPT or any illustrator)
+# Garment art brief (for a drawing agent or illustrator)
 
-Atelier draws every garment from code. You can replace any garment's drawing with a hand-made **SVG** file. The app still recolours it, applies the chosen material texture, clips artwork to it and exports it. Garments without a custom drawing keep the generated one.
+Atelier draws every garment from code. Any garment's drawing can be replaced with a hand-made **SVG** file. The app still recolours it, applies the chosen material texture, clips artwork to it and exports it. Garments without a custom drawing keep the generated one.
 
-This brief has three parts:
+**How to use this brief:** give the **whole document** to the drawing agent, ideally a Claude Code session with this repository checked out. Then add one line: "Follow section 1 of this brief." The agent works through every garment in the list at the end.
 
-1. **A prompt to paste into ChatGPT**, one garment at a time.
+1. **The agent prompt**: role, house style, quality process and workflow.
 2. **The exact file format** the app expects.
-3. **How to add the files to the repo** (GitHub website only, no coding).
+3. **How to add files** (the agent does this itself in Claude Code; in a chat, you upload them on GitHub).
 
 ---
 
-## 1. Prompt to paste into ChatGPT
-
-Copy everything in the box and paste it into ChatGPT as-is. It's already filled in for the first garment on the suggested list. For later garments, keep the same chat and send a short follow-up such as:
-`Next one. GARMENT: Stiletto pump, 4 inch heel, pointed toe. VIEW: outer side (toe pointing RIGHT)`
+## 1. Agent prompt
 
 ```text
-You are drawing a garment template for a clothing design app. Output ONE complete SVG file as code (not an image), following these rules exactly.
+ROLE
+You are a senior apparel designer and technical illustrator who draws product "flats" for fashion brands' tech packs and e-commerce. Your drawings are known for exact proportions, clean construction and instantly recognisable silhouettes. Bring that standard to every single drawing in this job.
 
-GARMENT: Western boot, ankle height, pointed toe, stacked heel
-VIEW: outer side (toe pointing RIGHT)
-(Other possible views: front, back, inner side with the toe pointing LEFT.)
-STYLE: clean fashion flat / technical drawing with soft realistic shading, like a premium product mock-up. Natural proportions. No background, no text, no logos.
+GOAL
+Draw a replacement SVG template for EVERY garment in the "Garment keys" tables at the end of this document:
+- Tops, Bottoms, Hats: two views each: "front" and "back".
+- Shoes: one view: "front", meaning the OUTER side profile with the toe pointing RIGHT. (The app mirrors it for the inner side.)
+That is about 360 drawings (157 types × 2 views + 47 shoes). All of them are in scope. Do not skip any, merge any, or stop early.
 
-FILE RULES
-1. Root element: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">. Centre the garment, leaving about 8% empty margin on every side. Shoes may use viewBox="0 0 600 420".
-2. <path id="outline" d="…"/>: ONE closed path that is the full silhouette of the garment, every part the fabric covers. No fill or stroke needed; the app paints it with the user's colour and material. If you really need several pieces, use <g id="outline"> containing only <path>/<ellipse>/<circle>/<rect>/<polygon> shapes.
-3. <g id="accent">: OPTIONAL. Shapes painted with the user's "trim" colour: shoe soles and heels, cap bands, contrast cuffs/collars. Geometry only; their fill is replaced.
-4. <g id="shading">: Soft folds, creases and highlights. Use ONLY black or white strokes/fills with low opacity (stroke-opacity/fill-opacity 0.08–0.35). Blurs are encouraged: define <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter> inside <defs> and use filter="url(#soft)". Light comes from the upper left.
-5. <g id="details">: Seams, topstitching (stroke-dasharray), buttons, eyelets, zips, pocket edges. Again ONLY black/white with opacity, or neutral greys for hardware, so they work on any garment colour. Thin lines: 1–2.5 units.
-6. <g id="outside">: OPTIONAL. Things that hang outside the silhouette and are NOT recoloured: laces, drawcords, straps, pull loops. Neutral colours.
-7. Everything must line up with the outline. Shading and details are clipped to the outline automatically.
-8. DO NOT use: <style>, style="…" attributes, <script>, <image>, <text>, external links or fonts, embedded bitmaps, or any solid colour except inside <g id="outside">. Use presentation attributes (fill, stroke, stroke-width, opacity…) instead of CSS.
-9. Keep the file under ~150 KB. Use smooth Bézier curves (C/Q) rather than many tiny line segments.
+HOUSE STYLE (match the app)
+The app is minimalist and utilitarian. The drawings must be too:
+- Clean, flat, front-on "fashion flat" drawings: a crisp silhouette, essential construction lines, and quiet, subtle shading. Not illustrations, not 3D renders, not sketches.
+- Do NOT over-detail. Draw only what identifies the garment and how it is built: main seams, plackets, pockets, cuffs, hems, closures, collars, soles. Leave out textures (the app adds fabric texture), wrinkles beyond a few soft folds, decorative flourishes, logos, text, people, hangers and backgrounds.
+- Detail budget per drawing: roughly 4–15 detail paths and 2–6 soft shading strokes. If you are over budget, simplify.
+- It must stay functional. Users place artwork on the garment, so keep the main print areas (chest, upper back, thigh, cap front, shoe quarter panel) clear of busy detail. The silhouette must read clearly as a 150 px thumbnail and look clean at 800 px.
+- Keep one visual language across the whole set: the same line weights (outline-adjacent seams 1.5–2, stitching 1–1.4 with dash 4 3), the same shading approach and the same framing. Every drawing should feel like part of one catalogue.
 
-Reply with only the SVG code in one code block.
+CONSISTENT FRAMING
+- Tops, Bottoms, Hats: viewBox "0 0 600 600". Garment centred horizontally (axis at x = 300). The garment's larger dimension fills about 84% of the canvas.
+- Within a category, keep the scale consistent, e.g. every T-shirt-sized top has a similar body width. Coats are longer, crop tops are shorter, but the shoulders stay the same width.
+- Shoes: viewBox "0 0 600 420", toe pointing RIGHT, the ground (bottom of the sole) at y = 380, the shoe about 480 units long. Shafts and heels rise from that ground line.
+
+QUALITY PROCESS — for EVERY garment, no shortcuts
+1. Reference: before drawing, recall the real-world garment as found in a top retailer's catalogue. Write 1–3 lines of notes: its defining silhouette, key proportions (e.g. "stiletto: heel height ≈ 25% of shoe length, very slim heel, long low vamp"), and what makes it different from its closest siblings in the list (e.g. trilby vs fedora brim width, chukka vs desert boot sole).
+2. Draw it, following the file rules below.
+3. Review it against the real garment and this checklist:
+   - Would a shopper name this garment correctly from the silhouette alone?
+   - Are the proportions true to life: lengths, widths, heel heights, brim widths, rise and inseam?
+   - Is it symmetric where the real one is (front/back views)?
+   - Is the outline one closed shape, with every detail sitting inside it and aligned to it?
+   - Does it match the house style, detail budget and framing of the drawings you've already made?
+   - Does the back view match the front: same silhouette width, plausible back construction (yokes, back pockets, hood seam, closures)?
+4. If any check fails, fix it and review again. Only output a drawing you would put in a professional product catalogue.
+5. Every garment gets its own drawing. Never copy an outline from another garment unless the real garments truly share that shape, and even then adjust the details that make it different.
+
+WORKFLOW
+A) If you can create files in this repository (e.g. Claude Code):
+   - Write each drawing to assets/garments/<category>/<key>-<view>.svg (e.g. assets/garments/shoes/cowboyBoot-front.svg).
+   - Register each file in assets/garments/manifest.json as you go (format in section 3).
+   - After each genre, serve the repo (python3 -m http.server 8123) and visually check your work at http://localhost:8123/tests/look.html?set=<category> and ...&view=back. That page shows every garment in a category at large size. Fix anything that looks off, small, misaligned or inconsistent with its neighbours.
+   - Commit after each category with a clear message. Work through all categories before finishing.
+B) If you are in a chat with no file access:
+   - Work in order, one genre per reply.
+   - For each garment, first write a line with the file path (e.g. "assets/garments/shoes/cowboyBoot-front.svg"), then the SVG in its own code block.
+   - End each reply with the manifest.json entries for that batch, and say which genre comes next. Continue when the user says "continue".
+In both cases, keep a running checklist of finished keys. Never summarise remaining garments as "similar" or "same as above". Draw them.
+
+FILE RULES (every drawing)
+1. Root: <svg xmlns="http://www.w3.org/2000/svg" viewBox="…"> as specified above.
+2. <path id="outline" d="…"/>: ONE closed path for the full silhouette (everything the material covers). No fill or stroke needed; the app paints it with the user's colour and material. If you truly need several pieces, use <g id="outline"> containing only path/ellipse/circle/rect/polygon shapes.
+3. <g id="accent">: OPTIONAL. Shapes painted with the user's trim colour: shoe soles and heels, hat bands, contrast cuffs and collars. Geometry only.
+4. <g id="shading">: a few soft folds and highlights, black or white only, at low opacity (0.08–0.3). Use a blur: <defs><filter id="soft"><feGaussianBlur stdDeviation="6"/></filter></defs> and filter="url(#soft)". Light comes from the upper left.
+5. <g id="details">: seams, topstitching (stroke-dasharray="4 3"), buttons, eyelets, zips, pocket edges. Black or white at low-to-medium opacity, or neutral grey for hardware, so they work on any garment colour.
+6. <g id="outside">: OPTIONAL. Things outside the silhouette that are not recoloured: laces, drawcords, straps, pull loops. Neutral colours.
+7. Everything lines up with the outline; shading and details are clipped to it automatically.
+8. Do NOT use <style>, style="…", <script>, <image>, <text>, external links or fonts, bitmaps, or solid colours outside <g id="outside">. Use presentation attributes (fill, stroke, stroke-width, opacity…).
+9. Smooth Bézier curves (C/Q), no jagged polylines. Keep each file under about 150 KB.
 ```
 
-**Tips**
-- Ask for one view at a time. For tops, bottoms and hats, ask for `front`, then `back`. For shoes, ask for `outer side`. The inner side is mirrored automatically unless you add your own.
-- If the drawing looks wrong, reply with what to fix ("toe is too long", "heel should be lower, ~5 cm") and ask for the full corrected SVG again.
-- To preview, save the code as a `.svg` file and open it in a browser. It shows as a flat shape plus faint lines, because the colour is added by the app.
+**If the agent is a chat rather than Claude Code:** reply "continue" after each batch, save each code block as a `.svg` file using the path written above it, and follow section 3 to upload. In Claude Code, the agent does all of this itself; you only need to review and merge its work.
 
 ---
 
@@ -76,11 +108,13 @@ What it strips for safety: scripts, event handlers, `<style>`, `style=""`, image
 </svg>
 ```
 
-A fuller working example: `tests/fixtures/garment-art/shoes/cowboyBoot-front.svg`.
+A fuller working example: `tests/fixtures/garment-art/shoes/cowboyBoot-front.svg`. Its proportions are only a placeholder, not a quality bar.
 
 ---
 
-## 3. Adding drawings to the app (GitHub website)
+## 3. Adding drawings to the app
+
+A Claude Code agent does these steps itself. By hand on the GitHub website:
 
 1. **Name the file** `<key>-<view>.svg`, using the key from the table at the end of this brief. Examples: `cowboyBoot-front.svg`, `hoodie-back.svg`.
    - For a drawing that applies to only one cut, use `<key>--<cut>-<view>.svg`, e.g. `cowboyBoot--kneeHigh-front.svg`.
@@ -113,7 +147,9 @@ The key (`"shoes/cowboyBoot"`) is the category plus the garment key. `cuts` is o
 
 ---
 
-## Suggested order (weakest generated drawings first)
+## Suggested order
+
+The agent draws everything. If you want the biggest improvements first, start here (the weakest generated drawings):
 
 1. Shoes: Western Boot (`shoes/cowboyBoot`), Heeled Sandal (`shoes/heeledSandal`), Stiletto, Pump, Block Heel, Kitten Heel, Wedge (`shoes/stiletto`, `shoes/pump`, `shoes/blockHeel`, `shoes/kittenHeel`, `shoes/wedgeHeel`), Heeled Ankle Boot (`shoes/ankleBoot`), Chelsea Boot (`shoes/chelsea`)
 2. Hats: Cowboy Hat, Beret, Trapper Hat, Bandana, Durag
