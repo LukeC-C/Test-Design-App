@@ -245,3 +245,56 @@ def band(p0, c1, c2, p3, w, w1=None):
 
 def centre(p0, c1, c2, p3):
     return f'M{pt(p0)} C{pt(c1)} {pt(c2)} {pt(p3)}'
+
+
+import re as _re
+
+_TOK = _re.compile(r'[MLCQZHVA]|-?\d*\.?\d+(?:e-?\d+)?', _re.I)
+
+
+def scale_d(d, k, cx=300, cy=0, ky=None):
+    """Scale an absolute path (M L C Q Z H V A only) about (cx, cy)."""
+    ky = k if ky is None else ky
+    toks = _TOK.findall(d)
+    out, i, cmd = [], 0, None
+    sx = lambda v: cx + (float(v) - cx) * k
+    sy = lambda v: cy + (float(v) - cy) * ky
+    while i < len(toks):
+        t = toks[i]
+        if t.isalpha():
+            cmd = t
+            out.append(t)
+            i += 1
+            if t in 'Zz':
+                continue
+        if cmd in 'MLCQ':
+            out.append(f'{f(sx(toks[i]))} {f(sy(toks[i + 1]))}')
+            i += 2
+        elif cmd == 'H':
+            out.append(f(sx(toks[i])))
+            i += 1
+        elif cmd == 'V':
+            out.append(f(sy(toks[i])))
+            i += 1
+        elif cmd == 'A':
+            rx, ry, rot, la, sw, x, y = toks[i:i + 7]
+            out.append(f'{f(float(rx) * k)} {f(float(ry) * ky)} {rot} {la} {sw} {f(sx(x))} {f(sy(y))}')
+            i += 7
+        else:
+            i += 1
+    s = ' '.join(out)
+    return _re.sub(r'([MLCQZHVA]) ', r'\1', s)
+
+
+def scale_drawing(D, k, cx=300, cy=0):
+    sd = lambda d: scale_d(d, k, cx, cy)
+    D.outline = [sd(d) if not d.startswith('<') else d for d in D.outline]
+    D.accent = [sd(d) for d in D.accent]
+    D.shade = [(sd(d), c, w * k, op) for d, c, w, op in D.shade]
+    D.det = [(sd(d), s) for d, s in D.det]
+
+    def el(e):
+        e = _re.sub(r' d="([^"]+)"', lambda m: f' d="{sd(m.group(1))}"', e)
+        return e
+    D.out = [el(e) for e in D.out]
+    return D

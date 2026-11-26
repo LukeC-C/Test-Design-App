@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 30 L419.6 30 C432.6 82 453.4 147 497.6 381 C418.6 394 359.3 394 300 394 C240.7 394 181.4 394 102.4 381 C146.6 147 167.4 82 180.4 30 L300 30 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M240.2 126.2 C233.1 243.2 191.3 251 191.3 355" stroke="#fff" stroke-width="46.8" stroke-opacity="0.13"/>
+    <path d="M395.7 126.2 C407.6 243.2 469.9 251 466 368" stroke="#000" stroke-width="31.2" stroke-opacity="0.16"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M180.4 74.2 L419.6 74.2"/><path d="M214.2 76.8 L157 381"/><path d="M245.4 76.8 L209 381"/><path d="M276.6 76.8 L261 381"/><path d="M323.4 76.8 L339 381"/><path d="M354.6 76.8 L391 381"/><path d="M385.8 76.8 L443 381"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M180.4 74.2 L419.6 74.2"/><path d="M214.2 76.8 L157 381"/><path d="M245.4 76.8 L209 381"/><path d="M276.6 76.8 L261 381"/><path d="M323.4 76.8 L339 381"/><path d="M354.6 76.8 L391 381"/><path d="M385.8 76.8 L443 381"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M180.4 66.4 L419.6 66.4"/><path d="M180.4 37.8 L419.6 37.8"/><path d="M105 368 C196 375.8 404 375.8 495 368"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M180.4 66.4 L419.6 66.4"/><path d="M180.4 37.8 L419.6 37.8"/><path d="M105 368 C196 375.8 404 375.8 495 368"/></g>
+    <g stroke="#000" stroke-opacity="0.48" stroke-width="2"><path d="M359.8 74.2 C378 173 417 303 443 386.2"/></g>
+    <g stroke="#fff" stroke-opacity="0.14" stroke-width="1.4" transform="translate(1 1.4)"><path d="M359.8 74.2 C378 173 417 303 443 386.2"/></g>
+  </g>
+</svg>

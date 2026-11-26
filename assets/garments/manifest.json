@@ -1,6 +1,206 @@
 {
   "version": 1,
   "garments": {
+    "bottoms/athletic": {
+      "front": "bottoms/athletic-front.svg",
+      "back": "bottoms/athletic-back.svg"
+    },
+    "bottoms/bike": {
+      "front": "bottoms/bike-front.svg",
+      "back": "bottoms/bike-back.svg"
+    },
+    "bottoms/board": {
+      "front": "bottoms/board-front.svg",
+      "back": "bottoms/board-back.svg"
+    },
+    "bottoms/cargo": {
+      "front": "bottoms/cargo-front.svg",
+      "back": "bottoms/cargo-back.svg"
+    },
+    "bottoms/cargoJeans": {
+      "front": "bottoms/cargoJeans-front.svg",
+      "back": "bottoms/cargoJeans-back.svg"
+    },
+    "bottoms/cargoJogger": {
+      "front": "bottoms/cargoJogger-front.svg",
+      "back": "bottoms/cargoJogger-back.svg"
+    },
+    "bottoms/cargoShorts": {
+      "front": "bottoms/cargoShorts-front.svg",
+      "back": "bottoms/cargoShorts-back.svg"
+    },
+    "bottoms/cargoSkirt": {
+      "front": "bottoms/cargoSkirt-front.svg",
+      "back": "bottoms/cargoSkirt-back.svg"
+    },
+    "bottoms/carpenter": {
+      "front": "bottoms/carpenter-front.svg",
+      "back": "bottoms/carpenter-back.svg"
+    },
+    "bottoms/carpenterJeans": {
+      "front": "bottoms/carpenterJeans-front.svg",
+      "back": "bottoms/carpenterJeans-back.svg"
+    },
+    "bottoms/chinoShorts": {
+      "front": "bottoms/chinoShorts-front.svg",
+      "back": "bottoms/chinoShorts-back.svg"
+    },
+    "bottoms/chinos": {
+      "front": "bottoms/chinos-front.svg",
+      "back": "bottoms/chinos-back.svg"
+    },
+    "bottoms/compressionTights": {
+      "front": "bottoms/compressionTights-front.svg",
+      "back": "bottoms/compressionTights-back.svg"
+    },
+    "bottoms/cords": {
+      "front": "bottoms/cords-front.svg",
+      "back": "bottoms/cords-back.svg"
+    },
+    "bottoms/denimSkirt": {
+      "front": "bottoms/denimSkirt-front.svg",
+      "back": "bottoms/denimSkirt-back.svg"
+    },
+    "bottoms/elasticJeans": {
+      "front": "bottoms/elasticJeans-front.svg",
+      "back": "bottoms/elasticJeans-back.svg"
+    },
+    "bottoms/fivePocket": {
+      "front": "bottoms/fivePocket-front.svg",
+      "back": "bottoms/fivePocket-back.svg"
+    },
+    "bottoms/joggers": {
+      "front": "bottoms/joggers-front.svg",
+      "back": "bottoms/joggers-back.svg"
+    },
+    "bottoms/jorts": {
+      "front": "bottoms/jorts-front.svg",
+      "back": "bottoms/jorts-back.svg"
+    },
+    "bottoms/kilt": {
+      "front": "bottoms/kilt-front.svg",
+      "back": "bottoms/kilt-back.svg"
+    },
+    "bottoms/knee": {
+      "front": "bottoms/knee-front.svg",
+      "back": "bottoms/knee-back.svg"
+    },
+    "bottoms/leggings": {
+      "front": "bottoms/leggings-front.svg",
+      "back": "bottoms/leggings-back.svg"
+    },
+    "bottoms/linenPants": {
+      "front": "bottoms/linenPants-front.svg",
+      "back": "bottoms/linenPants-back.svg"
+    },
+    "bottoms/lounge": {
+      "front": "bottoms/lounge-front.svg",
+      "back": "bottoms/lounge-back.svg"
+    },
+    "bottoms/maxi": {
+      "front": "bottoms/maxi-front.svg",
+      "back": "bottoms/maxi-back.svg"
+    },
+    "bottoms/micro": {
+      "front": "bottoms/micro-front.svg",
+      "back": "bottoms/micro-back.svg"
+    },
+    "bottoms/midi": {
+      "front": "bottoms/midi-front.svg",
+      "back": "bottoms/midi-back.svg"
+    },
+    "bottoms/mini": {
+      "front": "bottoms/mini-front.svg",
+      "back": "bottoms/mini-back.svg"
+    },
+    "bottoms/overalls": {
+      "front": "bottoms/overalls-front.svg",
+      "back": "bottoms/overalls-back.svg"
+    },
+    "bottoms/painter": {
+      "front": "bottoms/painter-front.svg",
+      "back": "bottoms/painter-back.svg"
+    },
+    "bottoms/palazzo": {
+      "front": "bottoms/palazzo-front.svg",
+      "back": "bottoms/palazzo-back.svg"
+    },
+    "bottoms/parachute": {
+      "front": "bottoms/parachute-front.svg",
+      "back": "bottoms/parachute-back.svg"
+    },
+    "bottoms/pleated": {
+      "front": "bottoms/pleated-front.svg",
+      "back": "bottoms/pleated-back.svg"
+    },
+    "bottoms/pleatedShorts": {
+      "front": "bottoms/pleatedShorts-front.svg",
+      "back": "bottoms/pleatedShorts-back.svg"
+    },
+    "bottoms/ripped": {
+      "front": "bottoms/ripped-front.svg",
+      "back": "bottoms/ripped-back.svg"
+    },
+    "bottoms/runTights": {
+      "front": "bottoms/runTights-front.svg",
+      "back": "bottoms/runTights-back.svg"
+    },
+    "bottoms/running": {
+      "front": "bottoms/running-front.svg",
+      "back": "bottoms/running-back.svg"
+    },
+    "bottoms/selvedge": {
+      "front": "bottoms/selvedge-front.svg",
+      "back": "bottoms/selvedge-back.svg"
+    },
+    "bottoms/skort": {
+      "front": "bottoms/skort-front.svg",
+      "back": "bottoms/skort-back.svg"
+    },
+    "bottoms/slip": {
+      "front": "bottoms/slip-front.svg",
+      "back": "bottoms/slip-back.svg"
+    },
+    "bottoms/sweatShorts": {
+      "front": "bottoms/sweatShorts-front.svg",
+      "back": "bottoms/sweatShorts-back.svg"
+    },
+    "bottoms/sweatpants": {
+      "front": "bottoms/sweatpants-front.svg",
+      "back": "bottoms/sweatpants-back.svg"
+    },
+    "bottoms/techPant": {
+      "front": "bottoms/techPant-front.svg",
+      "back": "bottoms/techPant-back.svg"
+    },
+    "bottoms/tennis": {
+      "front": "bottoms/tennis-front.svg",
+      "back": "bottoms/tennis-back.svg"
+    },
+    "bottoms/trackPants": {
+      "front": "bottoms/trackPants-front.svg",
+      "back": "bottoms/trackPants-back.svg"
+    },
+    "bottoms/trainingShorts": {
+      "front": "bottoms/trainingShorts-front.svg",
+      "back": "bottoms/trainingShorts-back.svg"
+    },
+    "bottoms/trousers": {
+      "front": "bottoms/trousers-front.svg",
+      "back": "bottoms/trousers-back.svg"
+    },
+    "bottoms/wideTrousers": {
+      "front": "bottoms/wideTrousers-front.svg",
+      "back": "bottoms/wideTrousers-back.svg"
+    },
+    "bottoms/workPants": {
+      "front": "bottoms/workPants-front.svg",
+      "back": "bottoms/workPants-back.svg"
+    },
+    "bottoms/yoga": {
+      "front": "bottoms/yoga-front.svg",
+      "back": "bottoms/yoga-back.svg"
+    },
     "hats/balaclava": {
       "front": "hats/balaclava-front.svg",
       "back": "hats/balaclava-back.svg"
