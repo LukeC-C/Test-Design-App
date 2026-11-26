@@ -12,13 +12,15 @@ This brief has three parts:
 
 ## 1. Prompt to paste into ChatGPT
 
-Copy everything in the box, then replace the three `<…>` placeholders.
+Copy everything in the box and paste it into ChatGPT as-is. It's already filled in for the first garment on the suggested list. For later garments, keep the same chat and send a short follow-up such as:
+`Next one. GARMENT: Stiletto pump, 4 inch heel, pointed toe. VIEW: outer side (toe pointing RIGHT)`
 
 ```text
 You are drawing a garment template for a clothing design app. Output ONE complete SVG file as code (not an image), following these rules exactly.
 
-GARMENT: <garment name, e.g. "Western boot, ankle height, pointed toe, stacked heel">
-VIEW: <front | back | outer side (toe pointing RIGHT) | inner side (toe pointing LEFT)>
+GARMENT: Western boot, ankle height, pointed toe, stacked heel
+VIEW: outer side (toe pointing RIGHT)
+(Other possible views: front, back, inner side with the toe pointing LEFT.)
 STYLE: clean fashion flat / technical drawing with soft realistic shading, like a premium product mock-up. Natural proportions. No background, no text, no logos.
 
 FILE RULES
