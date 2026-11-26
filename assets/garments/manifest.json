@@ -1,6 +1,134 @@
 {
   "version": 1,
   "garments": {
+    "hats/balaclava": {
+      "front": "hats/balaclava-front.svg",
+      "back": "hats/balaclava-back.svg"
+    },
+    "hats/bandana": {
+      "front": "hats/bandana-front.svg",
+      "back": "hats/bandana-back.svg"
+    },
+    "hats/baseball": {
+      "front": "hats/baseball-front.svg",
+      "back": "hats/baseball-back.svg"
+    },
+    "hats/beanie": {
+      "front": "hats/beanie-front.svg",
+      "back": "hats/beanie-back.svg"
+    },
+    "hats/beret": {
+      "front": "hats/beret-front.svg",
+      "back": "hats/beret-back.svg"
+    },
+    "hats/boater": {
+      "front": "hats/boater-front.svg",
+      "back": "hats/boater-back.svg"
+    },
+    "hats/boonie": {
+      "front": "hats/boonie-front.svg",
+      "back": "hats/boonie-back.svg"
+    },
+    "hats/bucket": {
+      "front": "hats/bucket-front.svg",
+      "back": "hats/bucket-back.svg"
+    },
+    "hats/cloche": {
+      "front": "hats/cloche-front.svg",
+      "back": "hats/cloche-back.svg"
+    },
+    "hats/cowboy": {
+      "front": "hats/cowboy-front.svg",
+      "back": "hats/cowboy-back.svg"
+    },
+    "hats/dad": {
+      "front": "hats/dad-front.svg",
+      "back": "hats/dad-back.svg"
+    },
+    "hats/durag": {
+      "front": "hats/durag-front.svg",
+      "back": "hats/durag-back.svg"
+    },
+    "hats/earflap": {
+      "front": "hats/earflap-front.svg",
+      "back": "hats/earflap-back.svg"
+    },
+    "hats/fedora": {
+      "front": "hats/fedora-front.svg",
+      "back": "hats/fedora-back.svg"
+    },
+    "hats/fitted": {
+      "front": "hats/fitted-front.svg",
+      "back": "hats/fitted-back.svg"
+    },
+    "hats/fivePanel": {
+      "front": "hats/fivePanel-front.svg",
+      "back": "hats/fivePanel-back.svg"
+    },
+    "hats/flatCap": {
+      "front": "hats/flatCap-front.svg",
+      "back": "hats/flatCap-back.svg"
+    },
+    "hats/headband": {
+      "front": "hats/headband-front.svg",
+      "back": "hats/headband-back.svg"
+    },
+    "hats/military": {
+      "front": "hats/military-front.svg",
+      "back": "hats/military-back.svg"
+    },
+    "hats/newsboy": {
+      "front": "hats/newsboy-front.svg",
+      "back": "hats/newsboy-back.svg"
+    },
+    "hats/panama": {
+      "front": "hats/panama-front.svg",
+      "back": "hats/panama-back.svg"
+    },
+    "hats/pomBeanie": {
+      "front": "hats/pomBeanie-front.svg",
+      "back": "hats/pomBeanie-back.svg"
+    },
+    "hats/porkpie": {
+      "front": "hats/porkpie-front.svg",
+      "back": "hats/porkpie-back.svg"
+    },
+    "hats/slouchBeanie": {
+      "front": "hats/slouchBeanie-front.svg",
+      "back": "hats/slouchBeanie-back.svg"
+    },
+    "hats/snapback": {
+      "front": "hats/snapback-front.svg",
+      "back": "hats/snapback-back.svg"
+    },
+    "hats/sunHat": {
+      "front": "hats/sunHat-front.svg",
+      "back": "hats/sunHat-back.svg"
+    },
+    "hats/sunVisor": {
+      "front": "hats/sunVisor-front.svg",
+      "back": "hats/sunVisor-back.svg"
+    },
+    "hats/trapper": {
+      "front": "hats/trapper-front.svg",
+      "back": "hats/trapper-back.svg"
+    },
+    "hats/trilby": {
+      "front": "hats/trilby-front.svg",
+      "back": "hats/trilby-back.svg"
+    },
+    "hats/trucker": {
+      "front": "hats/trucker-front.svg",
+      "back": "hats/trucker-back.svg"
+    },
+    "hats/visor": {
+      "front": "hats/visor-front.svg",
+      "back": "hats/visor-back.svg"
+    },
+    "hats/watchCap": {
+      "front": "hats/watchCap-front.svg",
+      "back": "hats/watchCap-back.svg"
+    },
     "shoes/ankleBoot": {
       "front": "shoes/ankleBoot-front.svg"
     },

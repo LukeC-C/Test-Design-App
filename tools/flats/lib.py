@@ -59,7 +59,8 @@ def sym(start, segs):
     end, rs = reverse(start, segs)
     right = path(start, segs, ox=AX)
     left = path(end, rs, ox=AX, sx=-1)
-    return right + ' ' + left[left.index(' ') + 1:] + ' Z'
+    import re
+    return right + ' ' + re.sub(r'^M\S+ \S+ ', '', left) + ' Z'
 
 
 def half(start, segs, side=1, close=False):

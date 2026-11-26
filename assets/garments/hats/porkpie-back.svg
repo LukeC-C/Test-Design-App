@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <g id="outline">
+    <path d="M300 348 C423.6 348 506 367 506 386 C506 411 423.6 434 300 434 C176.4 434 94 411 94 386 C94 367 176.4 348 300 348 Z"/>
+    <path d="M300 230 L438 230 Q446 230 447 238 L450 400 C450 410 382.5 416 300 416 C217.5 416 150 410 150 400 L153 238 Q154 230 162 230 L300 230 Z"/>
+  </g>
+  <g id="accent">
+    <path d="M149 370 C217.5 386 382.5 386 451 370 L451 400 C450 410 382.5 416 300 416 C217.5 416 150 410 149 400 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M195.0 280 C189.0 320 186.0 340 189.0 370" stroke="#fff" stroke-width="26" stroke-opacity="0.22"/>
+    <path d="M408.0 270 C426.0 320 432.0 340 429.0 380" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+    <path d="M150 418 C225.0 436 375.0 436 450 418" stroke="#000" stroke-width="16" stroke-opacity="0.22"/>
+    <path d="M122.84 400 C155.8 426.4 238.2 434.0 300 430" stroke="#fff" stroke-width="12" stroke-opacity="0.2"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M150 370 C217.5 386 382.5 386 450 370"/><path d="M150 400 C150 410 217.5 416 300 416 C382.5 416 450 410 450 400"/><path d="M158 234 L442 234"/></g>
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M168 240 C227.0 250 373.0 250 432 240"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M168 240 C227.0 250 373.0 250 432 240"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M104 386 C104 408.0 182.4 424 300 424 C417.6 424 496 408.0 496 386"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M104 386 C104 408.0 182.4 424 300 424 C417.6 424 496 408.0 496 386"/></g>
+  </g>
+</svg>

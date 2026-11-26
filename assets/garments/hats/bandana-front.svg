@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 150 C415.3 148 490 220 486 320 C484 350 476 368 464 372 C411.6 352 355.8 346 300 346 C244.2 346 188.4 352 136 372 C124 368 116 350 114 320 C110 220 184.7 148 300 150 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M207.0 200 C244.2 240 262.8 270 281.4 300" stroke="#000" stroke-width="14" stroke-opacity="0.14"/>
+    <path d="M393.0 200 C355.8 240 337.2 270 318.6 300" stroke="#000" stroke-width="14" stroke-opacity="0.14"/>
+    <path d="M188.4 230 C207.0 190 244.2 166 290.7 160" stroke="#fff" stroke-width="28" stroke-opacity="0.22"/>
+    <path d="M448.8 220 C474.84000000000003 260 478.56 300 467.4 340" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.48" stroke-width="2"><path d="M134 368 C188.4 346 244.2 338 300 338 C355.8 338 411.6 346 466 368"/></g>
+    <g stroke="#fff" stroke-opacity="0.14" stroke-width="1.4" transform="translate(1 1.4)"><path d="M134 368 C188.4 346 244.2 338 300 338 C355.8 338 411.6 346 466 368"/></g>
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M124 344 C188.4 322 244.2 316 300 316 C355.8 316 411.6 322 476 344"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M138 360 C188.4 338 244.2 330 300 330 C355.8 330 411.6 338 462 360"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M138 360 C188.4 338 244.2 330 300 330 C355.8 330 411.6 338 462 360"/></g>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <g id="outline">
+    <path d="M300 104 C461.7 104 505 179 505 372 C505 380.8 412.8 394 300 394 C187.2 394 95 380.8 95 372 C95 179 138.3 104 300 104 Z"/>
+    <path d="M300 364 L521 366 C517 378 505 386 475 388 L300 388 L125 388 C95 386 83 378 79 366 L300 364 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M156.5 184 C197.5 144 238.5 130 279.5 126" stroke="#fff" stroke-width="26" stroke-opacity="0.2"/>
+    <path d="M447.6 184 C484.5 244 488.6 332 484.5 372" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M300 108 L300 278"/><path d="M300 106 C390.2 110 451.7 194 464 386"/><path d="M300 106 C209.8 110 148.3 194 136 386"/><path d="M220 394 C222 316 256 278 300 278 C344 278 378 316 380 394"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M300 108 L300 278"/><path d="M300 106 C390.2 110 451.7 194 464 386"/><path d="M300 106 C209.8 110 148.3 194 136 386"/><path d="M220 394 C222 316 256 278 300 278 C344 278 378 316 380 394"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.14" stroke-opacity="0.5" stroke-width="1.2"><path d="M289 108 C289 96 311 96 311 108 Z"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.26" stroke-opacity="0.4" stroke-width="1.4"><path d="M230 394 C232 322 260 288 300 288 C340 288 368 322 370 394 Z"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.05" stroke-opacity="0.32" stroke-width="1.6"><path d="M234 368 H366 Q372 368 372 374 V384 Q372 390 366 390 H234 Q228 390 228 384 V374 Q228 368 234 368 Z"/></g>
+    <g fill="#c9c9c6" stroke="#6f6f6c" stroke-width="1.1"><path d="M255.5 379 A4.5 4.5 0 1 0 264.5 379 A4.5 4.5 0 1 0 255.5 379 Z"/><path d="M275.5 379 A4.5 4.5 0 1 0 284.5 379 A4.5 4.5 0 1 0 275.5 379 Z"/><path d="M295.5 379 A4.5 4.5 0 1 0 304.5 379 A4.5 4.5 0 1 0 295.5 379 Z"/><path d="M315.5 379 A4.5 4.5 0 1 0 324.5 379 A4.5 4.5 0 1 0 315.5 379 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M97 366 C198.5 386 401.5 386 503 366"/></g>
+  </g>
+</svg>

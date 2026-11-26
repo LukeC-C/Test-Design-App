@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <g id="outline">
+    <path d="M300 150 C477.7 150 505 216.6 505 372 C505 384 412.8 402 300 402 C187.2 402 95 384 95 372 C95 216.6 122.3 150 300 150 Z"/>
+    <path d="M300 400 C412.8 400 495 380 501 376 C505 384 423 450 300 452 C177 450 95 384 99 376 C105 380 187.2 400 300 400 Z"/>
+  </g>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M172.9 220 C197.5 190 238.5 176 279.5 172" stroke="#fff" stroke-width="26" stroke-opacity="0.22"/>
+    <path d="M443.5 230 C484.5 290 488.6 332 484.5 372" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+    <path d="M115.5 412 C218.0 442 382.0 442 484.5 412" stroke="#000" stroke-width="16" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M300 152 C405.8 156 451.7 240 464 390"/><path d="M300 152 C194.2 156 148.3 240 136 390"/><path d="M95 376 C197.5 406 402.5 406 505 376"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M300 152 C405.8 156 451.7 240 464 390"/><path d="M300 152 C194.2 156 148.3 240 136 390"/><path d="M95 376 C197.5 406 402.5 406 505 376"/></g>
+    <g stroke="#000" stroke-opacity="0.32" stroke-width="1.2" stroke-dasharray="4 3"><path d="M300 160 C361.5 166 427.1 260 439.4 388"/><path d="M300 160 C238.5 166 172.9 260 160.6 388"/><path d="M101 388.0 C172.9 473.0 427.1 473.0 499 388.0"/><path d="M101 392.0 C172.9 462.0 427.1 462.0 499 392.0"/></g>
+    <g stroke="#fff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3" transform="translate(.8 1)"><path d="M300 160 C361.5 166 427.1 260 439.4 388"/><path d="M300 160 C238.5 166 172.9 260 160.6 388"/><path d="M101 388.0 C172.9 473.0 427.1 473.0 499 388.0"/><path d="M101 392.0 C172.9 462.0 427.1 462.0 499 392.0"/></g>
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M169.7 220 A3.2 3.2 0 1 0 176.1 220 A3.2 3.2 0 1 0 169.7 220 Z"/><path d="M423.9 220 A3.2 3.2 0 1 0 430.3 220 A3.2 3.2 0 1 0 423.9 220 Z"/></g>
+  </g>
+</svg>

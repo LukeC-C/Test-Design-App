@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <path id="outline" d="M300 150 C477.7 150 505 216.6 505 372 C505 380.8 412.8 394 300 394 C187.2 394 95 380.8 95 372 C95 216.6 122.3 150 300 150 Z"/>
+  <g id="shading" filter="url(#soft)" fill="none" stroke-linecap="round">
+    <path d="M156.5 230 C197.5 190 238.5 176 279.5 172" stroke="#fff" stroke-width="26" stroke-opacity="0.2"/>
+    <path d="M447.6 230 C484.5 290 488.6 332 484.5 372" stroke="#000" stroke-width="22" stroke-opacity="0.18"/>
+  </g>
+  <g id="details" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000" stroke-opacity="0.34" stroke-width="1.7"><path d="M300 154 L300 278"/><path d="M300 152 C390.2 156 451.7 240 464 386"/><path d="M300 152 C209.8 156 148.3 240 136 386"/><path d="M220 394 C222 316 256 278 300 278 C344 278 378 316 380 394"/></g>
+    <g stroke="#fff" stroke-opacity="0.16" stroke-width="1.2" transform="translate(1 1.2)"><path d="M300 154 L300 278"/><path d="M300 152 C390.2 156 451.7 240 464 386"/><path d="M300 152 C209.8 156 148.3 240 136 386"/><path d="M220 394 C222 316 256 278 300 278 C344 278 378 316 380 394"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.26" stroke-opacity="0.4" stroke-width="1.4"><path d="M230 394 C232 322 260 288 300 288 C340 288 368 322 370 394 Z"/></g>
+    <g fill="#000" stroke="#000" fill-opacity="0.05" stroke-opacity="0.32" stroke-width="1.6"><path d="M234 370 H366 Q372 370 372 376 V382 Q372 388 366 388 H234 Q228 388 228 382 V376 Q228 370 234 370 Z"/></g>
+    <g fill="#c9c9c6" stroke="#6f6f6c" stroke-width="1.1"><path d="M293 366 H313 Q316 366 316 369 V389 Q316 392 313 392 H293 Q290 392 290 389 V369 Q290 366 293 366 Z"/></g>
+    <g fill="#000" stroke="none" fill-opacity="0.4"><path d="M298 372 H308 Q310 372 310 374 V384 Q310 386 308 386 H298 Q296 386 296 384 V374 Q296 372 298 372 Z"/></g>
+    <g stroke="#000" stroke-opacity="0.22" stroke-width="1.5"><path d="M97 366 C198.5 386 401.5 386 503 366"/></g>
+  </g>
+</svg>
